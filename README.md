@@ -18,3 +18,9 @@ Action redirects to: /article/post
 ### /report/reportFrom.html
 description
 Action redirects to: /report/send
+
+## How to Build/Run the project
+### Run
+```mvn -q spring-boot:run```
+### Build
+```mvn clean package```
