@@ -46,7 +46,7 @@ public class UserServiceDummy implements UserService {
 			}
 		}
 		
-		return UnknownUser;
+		return User.UNKNOWN_USER;
 	}
 
 	@Override

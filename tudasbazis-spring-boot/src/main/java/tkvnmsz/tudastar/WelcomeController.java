@@ -28,13 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WelcomeController {
 
-	@Value("${application.message:Hello World}")
-	private String message = "Megy ez a fos";
-
 	@GetMapping("/")
 	public String welcome(Model model) {
-		model.addAttribute("message", this.message);
-		return "welcome";
+		return "index";
 	}
 	
 
@@ -43,10 +39,4 @@ public class WelcomeController {
 		model.addAttribute("id", id);
 		return "test";
 	}
-
-	@RequestMapping("/foo")
-	public String foo(Map<String, Object> model) {
-		throw new RuntimeException("Foo");
-	}
-
 }

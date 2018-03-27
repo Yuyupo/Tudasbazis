@@ -11,7 +11,7 @@ import tkvnmsz.tudastar.login.UserService;
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class SessionData {
-	private User user = UserService.UnknownUser;
+	private User user = User.UNKNOWN_USER;
 
 	public User getUser() {
 		return user;
@@ -22,6 +22,6 @@ public class SessionData {
 	}
 
 	public void unsetUser() {
-		user = UserService.UnknownUser;
+		user = User.UNKNOWN_USER;
 	}
 }

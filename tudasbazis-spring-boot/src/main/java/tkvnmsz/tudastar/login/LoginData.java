@@ -20,9 +20,4 @@ public class LoginData {
 		this.password = password;
 	}
 
-	@Override
-	public String toString() {
-		return "LoginData [username=" + username + ", password=" + password + "]";
-	}
-
 }

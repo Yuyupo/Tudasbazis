@@ -13,7 +13,7 @@ import tkvnmsz.tudastar.session.SessionData;
 @Controller
 public class LoginController {
 	@Autowired
-	private UserServiceDummy userService; 
+	private UserService userService; 
 	
 	@Autowired
 	private SessionData sessionData;

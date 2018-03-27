@@ -1,9 +1,18 @@
 package tkvnmsz.tudastar.login;
 
 public interface UserService {
-	static final User UnknownUser = new User("unknown");  
-	
+	/**
+	 * Login the user with the given datas
+	 * @param loginData
+	 * @return
+	 */
 	User login(LoginData loginData);
+	
+	/**
+	 * Register user
+	 * @param registerData
+	 * @return
+	 */
 	boolean register(RegisterData registerData);
 
 }

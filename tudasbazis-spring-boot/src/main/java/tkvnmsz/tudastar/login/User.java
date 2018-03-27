@@ -1,6 +1,8 @@
 package tkvnmsz.tudastar.login;
 
 public class User {
+	public static final User UNKNOWN_USER = new User("unknown");
+
 	private String username;
 	private boolean loggedIn;
 	private boolean admin;
@@ -10,6 +12,7 @@ public class User {
 		super();
 		this.username = username;
 	}
+
 	public User(User user) {
 		super();
 		username = user.username;
