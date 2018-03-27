@@ -1,0 +1,21 @@
+{
+  "name": "tudasbazis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "welcome.jsp",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuyupo/Tudasbazis.git"
+  },
+  "author": "Zsolt Szamosvolgyi, Endre Varadi, Daniella Barsony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yuyupo/Tudasbazis/issues"
+  },
+  "homepage": "https://github.com/Yuyupo/Tudasbazis#readme"
+}
