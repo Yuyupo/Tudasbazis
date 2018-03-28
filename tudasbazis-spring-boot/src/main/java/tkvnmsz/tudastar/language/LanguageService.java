@@ -5,7 +5,7 @@ import java.util.List;
 public interface LanguageService {
 	/**
 	 * List all available languages
-	 * @return
+	 * @return list of languages
 	 */
 	List<Language> listLanguages();
 	

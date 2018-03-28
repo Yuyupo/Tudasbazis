@@ -13,7 +13,7 @@ public class Article {
 	private String date;
 	private int topicId;
 	private int writerId;
-	private boolean overviewed;
+	private boolean reviewed;
 	private List<Integer> keywordIDs;
 
 	public String getTitle() {
@@ -88,12 +88,12 @@ public class Article {
 		this.writerId = writerId;
 	}
 
-	public boolean isOverviewed() {
-		return overviewed;
+	public boolean isReviewed() {
+		return reviewed;
 	}
 
-	public void setOverviewed(boolean overviewed) {
-		this.overviewed = overviewed;
+	public void setReviewed(boolean overviewed) {
+		this.reviewed = overviewed;
 	}
 
 	public List<Integer> getKeywordIDs() {
@@ -102,6 +102,13 @@ public class Article {
 
 	public void setKeywordIDs(List<Integer> keywordIDs) {
 		this.keywordIDs = keywordIDs;
+	}
+
+	@Override
+	public String toString() {
+		return "Article [title=" + title + ", content=" + content + ", languageId=" + languageId + ", changeKind="
+				+ changeKind + ", categoryId=" + categoryId + ", id=" + id + ", date=" + date + ", topicId=" + topicId
+				+ ", writerId=" + writerId + ", overviewed=" + reviewed + ", keywordIDs=" + keywordIDs + "]";
 	}
 
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post">
+		<label for="title">Cím:</label><input type="text" name="title" id="title"><br>
+		<label for="content">Tartalom:</label><input type="text" name="content" id="content"><br>
+		<label for="keywords">Kulcsszavak:</label><input type="text" name="keywords" id="keywords"><br>
+		<label for="languageId">Nyelv (ID):</label><input type="text" name="languageId" id="languageId"><br>
+		<label for="categoryId">Kategória (ID):</label>
+		
+		<select name="categoryId">
+			<option th:each="category : ${categories}" th:value="${category.id} + a" th:text="${category.name}">Kategória</option> 
+		</select>
+		
+		<input type="submit" value="Küldés">
+	</form>
+</body>
+</html>

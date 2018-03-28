@@ -58,4 +58,10 @@ public class ArticlePostData {
 		this.categoryId = categoryId;
 	}
 
+	@Override
+	public String toString() {
+		return "ArticlePostData [title=" + title + ", content=" + content + ", keywords=" + keywords + ", languageId="
+				+ languageId + ", changeKind=" + changeKind + ", categoryId=" + categoryId + "]";
+	}
+	
 }

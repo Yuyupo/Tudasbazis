@@ -4,7 +4,7 @@ public interface UserService {
 	/**
 	 * Login the user with the given datas
 	 * @param loginData
-	 * @return
+	 * @return the user, that logged in
 	 */
 	User login(LoginData loginData);
 	

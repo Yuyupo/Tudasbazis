@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	cikk olvasás.
+	
+	<div th:switch="${article.reviewed}">
+		Megerősített: 
+		<font th:case="true" color="green">IGEN</font>
+		<font th:case="false" color="red">MÉG NEM</font>
+	</div>
+	
+	<h1 th:text="${article.title}">A cikk címe</h1>
+	<hr>
+	<p th:text="${article.content}">A tartalom</p>
+</body>
+</html>

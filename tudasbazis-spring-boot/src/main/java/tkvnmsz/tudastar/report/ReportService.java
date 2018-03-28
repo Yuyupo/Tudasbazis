@@ -6,7 +6,7 @@ public interface ReportService {
 	/**
 	 * Send report
 	 * @param reportPostData
-	 * @return
+	 * @return the newly created report's id
 	 */
 	int report(ReportPostData reportPostData);
 	
@@ -24,13 +24,13 @@ public interface ReportService {
 	
 	/**
 	 * List the reports that are not confirmed yet
-	 * @return
+	 * @return list of reports
 	 */
 	List<Report> listNotConfirmed();
 	
 	/**
 	 * List the reports that are not corrected yet
-	 * @return
+	 * @return list of reports
 	 */
 	List<Report> listNotCorrected();
 }

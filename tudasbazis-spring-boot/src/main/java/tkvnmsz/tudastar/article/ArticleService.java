@@ -4,32 +4,26 @@ public interface ArticleService {
 	/**
 	 * Post new article
 	 * @param article
-	 * @return
+	 * @return the id of the newly created article
 	 */
 	int post(ArticlePostData articlePostData);
 	
 	/**
-	 * Accept article to publish
-	 * @param articleId
-	 */
-	void accept(int articleId);
-	
-	/**
 	 * Get a specific article
 	 * @param articleId
-	 * @return
+	 * @return article
 	 */
 	Article getById(int articleId);
 	
 	/**
 	 * Get the most times modified article
-	 * @return
+	 * @return id of returned article
 	 */
 	int mostTimesModifiedArticle();
 	
 	/**
 	 * get the most times corrected article
-	 * @return
+	 * @return id of returned article
 	 */
 	int mostTimesCorrectedArticle();
 }

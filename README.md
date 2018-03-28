@@ -18,3 +18,12 @@ Action redirects to: /article/post
 ### /report/reportFrom.html
 description
 Action redirects to: /report/send
+
+##Functional urls
+/
+/login
+/logout
+/article/read/{articleId}
+/article/post
+/article/review/accept/{articleId}
+/article/review/decline/{articleId}

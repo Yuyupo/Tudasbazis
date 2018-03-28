@@ -21,6 +21,14 @@ public class User {
 		lector = user.lector;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public boolean isLoggedIn() {
 		return loggedIn;
 	}
@@ -44,9 +52,6 @@ public class User {
 	public void setLector(boolean lector) {
 		this.lector = lector;
 	}
-
-	public String getUsername() {
-		return username;
-	}
+	
 
 }
