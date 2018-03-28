@@ -27,3 +27,10 @@ Action redirects to: /report/send
 /article/post
 /article/review/accept/{articleId}
 /article/review/decline/{articleId}
+
+
+## How to Build/Run the project
+### Run
+```mvn -q spring-boot:run```
+### Build
+```mvn clean package```
