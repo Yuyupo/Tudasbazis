@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Wikiclone profile</title>
+
+    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
+  </head>
+
+  <body>
+ 
+	<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="../index.html">Home</a></li>
+            <li role="presentation" class="active"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Categories</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Wikiclone</h3>
+      </div>
+     
+
+      <div class="jumbotron">
+      	<img src="../../static/login/owl.png" height="100" width="100">
+        <h1 th:text="${user.name}">Username</h1>
+        <!-- tudományos fokozat megadása, intézet megadása, hozzáértett kategóriák megjelelölése
+         (soronként egy kategória, több rádiógomb, hogy milyen szinten érti a nyelvet/szaknyelvet) -->
+        <p th:text="${user.}"></p>
+        <ul class="nav nav-pills" role="tablist">
+        	<!-- ide kell majd if a user admin akkor legyen ott a review -->
+        	<li role="presentation" class="active"><a href="#">New articles to review<span class="badge">3</span></a></li>
+        	<li role="presentation" class="active"><a href="#">List users</a></li>
+        	<li role="presentation"><a href="#">Your articles</a></li>
+        </ul>
+      </div>
+     </div>
+     <!-- /container -->
+
+  </body>
+</html>
