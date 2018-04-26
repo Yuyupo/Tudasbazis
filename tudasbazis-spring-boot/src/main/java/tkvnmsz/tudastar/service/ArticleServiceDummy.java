@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -67,6 +68,16 @@ public class ArticleServiceDummy implements ArticleService {
 	
 	@Override
 	public int post(ArticlePostData articlePostData) {
+		Article article = new Article();
+		article.setCategoryId(articlePostData.getCategoryId());
+		article.setChangeKind(articlePostData.getChangeKind());
+		article.setContent(articlePostData.getContent());
+		article.setDate(new Date().toString());
+		article.setId(articles.size());
+		article.setLanguageId(article.getLanguageId());
+		article.setReviewed(false);
+		article.setTitle(articlePostData.getTitle());
+		
 		return 0;
 	}
 

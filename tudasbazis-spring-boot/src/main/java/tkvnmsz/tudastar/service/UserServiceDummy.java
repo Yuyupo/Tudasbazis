@@ -23,15 +23,15 @@ public class UserServiceDummy implements UserService {
 		users = new ArrayList<>();
 		User user;
 		
-		user = new User("Idarav");
+		user = new User(users.size(), "Idarav");
 		user.setAdmin(true);
 		users.add(user);
 		
-		user = new User("Loop");
+		user = new User(users.size(), "Loop");
 		user.setLector(true);
 		users.add(user);
 		
-		user = new User("Yuyupo");
+		user = new User(users.size(), "Yuyupo");
 		users.add(user);
 	}
 	
@@ -51,6 +51,9 @@ public class UserServiceDummy implements UserService {
 
 	@Override
 	public boolean register(RegisterData registerData) {
+		User user = new User(users.size(), registerData.getUsername());
+		users.add(user);
+		
 		return true;
 	}
 }

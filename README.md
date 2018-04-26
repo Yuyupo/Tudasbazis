@@ -23,6 +23,7 @@ Action redirects to: /report/send
 /
 /login
 /logout
+/status - shows login status
 /article/read/{articleId}
 /article/post
 /article/review/accept/{articleId}
