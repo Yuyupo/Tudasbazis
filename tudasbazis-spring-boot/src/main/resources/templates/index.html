@@ -1,32 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <title>Wikiclone</title>
-    
-    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  	<script src="../static/bootstrap/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="header.html"></head>
+  <body>																																										
     <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="./profile/profile.html">Profile</a></li>
-            <li role="presentation"><a href="./categories/categories.html">Categories</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Wikiclone</h3>
-      </div>
+      <div th:replace="menubar.html"></div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
@@ -66,7 +43,7 @@
 	  </a>
 	</div>
       
- 	<div class="row marketing">
+ 	<!--    <div class="row marketing">
         <div class="col-lg-6">
           <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
@@ -94,7 +71,7 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
           <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
         </div>
-      </div>
+      </div>-->
      
 
 

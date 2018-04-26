@@ -1,17 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Wikiclone profile</title>
-
-    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
-  </head>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="header.html"></head>
   <body>
  
 	<div class="container">
@@ -19,7 +8,7 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="../index.html">Home</a></li>
-            <li role="presentation" class="active"><a href="#">Profile</a></li>
+            <li role="presentation" class="active"><a href="../profile/profile.html">Profile</a></li>
             <li role="presentation"><a href="../categories/categories.html">Categories</a></li>
           </ul>
         </nav>
@@ -45,6 +34,18 @@
 		  <div class="form-group">
 			  <label for="sel1">Choose category(Hold shift to select more than one):</label>
 			  <select multiple class="form-control" id="sel1">
+			    <option>1</option>
+			    <option>2</option>
+			    <option>3</option>
+			    <option>4</option>
+			    <option>3</option>
+			    <option>4</option>
+			  </select>
+		</div>
+		
+		<div class="form-group">
+			  <label for="sel2">Choose keywords(Hold shift to select more than one):</label>
+			  <select multiple class="form-control" id="sel2">
 			    <option>1</option>
 			    <option>2</option>
 			    <option>3</option>
