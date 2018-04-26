@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
     <title>Wikiclone profile</title>
@@ -22,7 +20,7 @@
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="../index.html">Home</a></li>
             <li role="presentation" class="active"><a href="#">Profile</a></li>
-            <li role="presentation"><a href="#">Categories</a></li>
+            <li role="presentation"><a href="../categories/categories.html">Categories</a></li>
           </ul>
         </nav>
         <h3 class="text-muted">Wikiclone</h3>
@@ -34,11 +32,17 @@
         <h1 th:text="${user.name}">Username</h1>
         <!-- tudományos fokozat megadása, intézet megadása, hozzáértett kategóriák megjelelölése
          (soronként egy kategória, több rádiógomb, hogy milyen szinten érti a nyelvet/szaknyelvet) -->
-        <p th:text="${user.}"></p>
+         <p th:text="${user.skill}">Skill</p>
+         <p th:text="${user.facility}">Facility</p>
+         <p th:text="${user.categories}">Categories i'm not a complete retard at</p>
         <ul class="nav nav-pills" role="tablist">
         	<!-- ide kell majd if a user admin akkor legyen ott a review -->
         	<li role="presentation" class="active"><a href="#">New articles to review<span class="badge">3</span></a></li>
         	<li role="presentation" class="active"><a href="#">List users</a></li>
+        	<li role="presentation" class="active"><a href="#">Lazy users</a></li>
+        </ul>
+        <ul class="nav nav-pills" role="tablist">
+        	<li role="presentation"><a href="../article/postform.html">Write article</a></li>
         	<li role="presentation"><a href="#">Your articles</a></li>
         </ul>
       </div>
