@@ -33,7 +33,7 @@ public class LoginController {
 			
 			return Pages.LOGIN_SUCCESSFUL;
 		}else {
-			model.addAttribute("message", "Wrong username or passwrod.");
+			model.addAttribute("message", "Wrong username or password.");
 			return Pages.LOGIN_FAILED;
 		}
 	}
@@ -43,7 +43,24 @@ public class LoginController {
 		sessionData.unsetUser();
 		return Pages.LOGOUT;
 	}
+	
+	@GetMapping("/signup")
+	public String signupForm() {
+		return Pages.LOGIN_FORM;
+	}
 
+	@PostMapping(value = "/signup")
+	public String signupSubmit(@ModelAttribute SignupData signupData, Model model) {
+		boolean success = userService.signup(signupData);
+		
+		if (success) {			
+			return Pages.SIGNUP_SUCCESSFUL;
+		}else {
+			model.addAttribute("message", "Something went wrong. Sry. :(");
+			return Pages.SIGNUP_FAILED;
+		}
+	}
+	
 	@GetMapping("/status")
 	@ResponseBody
 	public User status() {

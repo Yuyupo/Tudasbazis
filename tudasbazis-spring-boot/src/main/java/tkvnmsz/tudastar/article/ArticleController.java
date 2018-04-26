@@ -40,7 +40,7 @@ public class ArticleController {
 
 	@PostMapping("/post")
 	public String postSubmit(@ModelAttribute ArticlePostData articlePostData, @RequestParam Map<String, String> queryParameters) {
-		
+
 		String kindParameter = queryParameters.get("kind");
 		ChangeKind kind = ChangeKind.CREATE;
 		if( kindParameter != null ) {

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import tkvnmsz.tudastar.login.LoginData;
-import tkvnmsz.tudastar.login.RegisterData;
+import tkvnmsz.tudastar.login.SignupData;
 import tkvnmsz.tudastar.login.User;
 import tkvnmsz.tudastar.login.UserService;
 
@@ -50,7 +50,7 @@ public class UserServiceDummy implements UserService {
 	}
 
 	@Override
-	public boolean register(RegisterData registerData) {
+	public boolean signup(SignupData registerData) {
 		User user = new User(users.size(), registerData.getUsername());
 		users.add(user);
 		
