@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="header.html"></head>
-  <body>
- 
+<head th:replace="header.html"></head>
+<body>
+
 	<div class="container">
-      <div th:replace="menubar.html"></div>
-     
+		<div th:replace="menubar.html"></div>
 
-      <div class="jumbotron">
-      	<div class="form-group">
-      		<h2>Write your own article</h2><br>
-		  <label for="title">Title:</label>
-		  <input type="text" class="form-control" id="usr" required>
-		</div>
-		<div class="form-group">
-		  <label for="description">Description:</label>
-		  <input type="text" class="form-control" id="pwd" required>
-		</div>
-		<div class="form-group">
-		  <label for="article">Article:</label><br>
-		   <textarea class="form-control" rows="35" id="article"></textarea>
-		</div>
-		<!-- itt is ki tudod listzani foreachel -->
-		  <div class="form-group">
-			  <label for="sel1">Choose category(Hold shift to select more than one):</label>
-			  <select multiple class="form-control" id="sel1">
-			    <option>1</option>
-			    <option>2</option>
-			    <option>3</option>
-			    <option>4</option>
-			    <option>3</option>
-			    <option>4</option>
-			  </select>
-		</div>
-		
-		<div class="form-group">
-			  <label for="sel2">Choose keywords(Hold shift to select more than one):</label>
-			  <select multiple class="form-control" id="sel2">
-			    <option>1</option>
-			    <option>2</option>
-			    <option>3</option>
-			    <option>4</option>
-			    <option>3</option>
-			    <option>4</option>
-			  </select>
-		</div>
-		
-		<button type="button" class="btn btn-info">Submit</button>
-      </div>
-      
-     </div>
-     <!-- /container -->
 
-  </body>
+		<div class="jumbotron">
+			<form method="post">
+				<div class="form-group">
+					<h2>Write your own article</h2>
+					<br> <label for="title">Title:</label> <input type="text"
+						class="form-control" id="usr" required>
+				</div>
+				<div class="form-group">
+					<label for="description">Description:</label> <input type="text"
+						class="form-control" id="pwd" required>
+				</div>
+				<div class="form-group">
+					<label for="article">Article:</label><br>
+					<textarea class="form-control" rows="35" id="article"></textarea>
+				</div>
+				<!-- itt is ki tudod listzani foreachel -->
+				<div class="form-group">
+					<label for="sel1">Choose category:</label> 
+					<select class="form-control" id="sel1" name="category">
+						<th:block th:each="category : ${categories}">
+							<option th:value="${category.id}" th:text="${category.name}"></option>
+						</th:block>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="sel2">Choose keywords(Hold shift to select more
+						than one):</label> <select multiple class="form-control" id="sel2" name="keywords">
+						<th:block th:each="keyword : ${keywords}">
+							<option th:value="${keyword.id}" th:text="${keyword.keyword}"></option>
+						</th:block>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-info">Submit</button>
+			</form>
+		</div>
+
+	</div>
+	<!-- /container -->
+
+</body>
 </html>

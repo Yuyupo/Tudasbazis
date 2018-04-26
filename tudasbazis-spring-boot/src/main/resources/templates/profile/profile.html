@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="header.html"></head>
+<head th:replace="header.html"></head>
 
-  <body>
- 
+<body>
+
 	<div class="container">
-      <div th:replace="menubar.html"></div>
-      <div class="jumbotron">
-      	<img src="login/owl.png" height="100" width="100">
-        <h1 th:text="${user.username}">Username</h1>
-        <!-- skill/facility/categories -->
-         <p>user.skill</p>
-         <p>user.acility</p>
-         <p>user.Categories i'm not a complete retard at</p>
-        <ul class="nav nav-pills" role="tablist">
-        	<!-- ide kell majd if a user lector akkor legyen ott a review -->
-        	<li role="presentation" class="active"><a href="#">New articles to review<span class="badge">3</span></a></li>
-        	<li role="presentation" class="active"><a href="#">List users</a></li>
-        	<li role="presentation" class="active"><a href="#">Lazy users</a></li>
-        </ul>
-        <ul class="nav nav-pills" role="tablist">
-        	<li role="presentation"><a href="../article/postform.html">Write article</a></li>
-        	<li role="presentation"><a href="#">Your articles</a></li>
-        </ul>
-      </div>
-     </div>
-     <!-- /container -->
+		<div th:include="menubar.html" th:with="page=${'profile'}"></div>
+		<div class="jumbotron">
+			<img src="login/owl.png" height="100" width="100">
+			<h1 th:text="${user.username}">Username</h1>
+			<!-- skill/facility/categories -->
+			<p>user.skill</p>
+			<p>user.acility</p>
+			<p>user.Categories i'm not a complete retard at</p>
+			<ul class="nav nav-pills" role="tablist">
+				<!-- ide kell majd if a user lector akkor legyen ott a review -->
+				<li role="presentation" class="active"><a href="#">New
+						articles to review<span class="badge">3</span>
+				</a></li>
+				<li role="presentation" class="active"><a href="#">List
+						users</a></li>
+				<li role="presentation" class="active"><a href="#">Lazy
+						users</a></li>
+			</ul>
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation"><a href="/article/post">Write
+						article</a></li>
+				<li role="presentation"><a href="#">Your articles</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /container -->
 
-  </body>
+</body>
 </html>

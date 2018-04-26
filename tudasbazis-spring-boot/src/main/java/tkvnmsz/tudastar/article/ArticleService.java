@@ -1,5 +1,7 @@
 package tkvnmsz.tudastar.article;
 
+import java.util.List;
+
 public interface ArticleService {
 	/**
 	 * Post new article
@@ -26,4 +28,18 @@ public interface ArticleService {
 	 * @return id of returned article
 	 */
 	int mostTimesCorrectedArticle();
+	
+	/**
+	 * get the number of articles in a category
+	 * @param categoryId
+	 * @return number of articles in the category
+	 */
+	int numberOfArticlesInCategory(int categoryId);
+	
+	/**
+	 * List articles written in the category
+	 * @param categoryId
+	 * @return list of articles
+	 */
+	List<Article> articlesInCategory(int categoryId);
 }
