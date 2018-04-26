@@ -10,10 +10,11 @@ public class Pages {
 	public static final String LOGOUT = MAIN_PAGE;
 	
 	public static final String SIGNUP_FORM = "login/signupForm";
+	
 	public static final String SIGNUP_SUCCESSFUL = "redirect:/";
 	public static final String SIGNUP_FAILED = SIGNUP_FORM;
 	
-	public static final String PROFILE = "profile/profile.html";
+	public static final String PROFILE = "profile/profile";
 	
 	public static final String CATEGORIES = "/categories/categories";
 	public static final String CATEGORIES_LISTED = "/categories/listed";
