@@ -7,7 +7,7 @@ public class Pages {
 	public static final String LOGIN_SUCCESSFUL = "redirect:/";
 	public static final String LOGIN_FAILED = LOGIN_FORM;
 	
-	public static final String LOGOUT = MAIN_PAGE;
+	public static final String LOGOUT = "redirect:/";
 	
 	public static final String SIGNUP_FORM = "login/signupForm";
 	

@@ -3,7 +3,7 @@
   <head th:replace="header.html"></head>
   <body>																																										
     <div class="container">
-      <div th:replace="menubar.html"></div>
+		<div th:include="menubar.html" th:with="page=${'home'}"></div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">

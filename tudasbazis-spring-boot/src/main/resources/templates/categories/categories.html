@@ -1,42 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head th:replace="header.html"></head>
-  <body>
+<head th:replace="header.html"></head>
+<body>
 
-    <div class="container">
-      <div th:replace="menubar.html"></div>
-	
-	
-	<div class="jumbotron">
-  	<h1>Categories</h1>            
-		  <table class="table table-striped">
-		    <thead>
-		      <tr>
-		        <th>Name</th>
-		        <th>Articles no.</th>
-		        <th>Authors no.</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		      <tr>
-		        <td><a href="./listed.html">Pisikaki</a></td>
-		        <td>123413</td>
-		        <td>10</td>
-		      </tr>
-		      <tr>
-		        <td>Mary</td>
-		        <td>1</td>
-		        <td>3</td>
-		      </tr>
-		      <tr>
-		        <td>July</td>
-		        <td>0</td>
-		        <td>0</td>
-		      </tr>
-		    </tbody>
-		  </table>
+	<div class="container">
+		<div th:include="menubar.html" th:with="page=${'categories'}"></div>
+
+
+		<div class="jumbotron">
+			<h1>Categories</h1>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Articles no.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="category : ${categories}">
+						<tr>
+							<td><a th:href="'/category/' + ${category.id}"
+								th:text="${category.name}">Categoria neve</a></td>
+							<td th:text="${category.numberOfArticles}">12</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
 		</div>
-     </div>
-	
+	</div>
+
 </body>
 </html>
