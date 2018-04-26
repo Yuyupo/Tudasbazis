@@ -9,7 +9,9 @@ public class Pages {
 	
 	public static final String LOGOUT = MAIN_PAGE;
 	
-	public static final String REGISTER_FORM = "login/registerForm";
+	public static final String SIGNUP_FORM = "login/signupForm";
+	public static final String SIGNUP_SUCCESSFUL = LOGIN_FORM;
+	public static final String SIGNUP_FAILED = SIGNUP_FORM;
 	
-	
+	public static final String PROFILE = "profile/profile.html";
 }

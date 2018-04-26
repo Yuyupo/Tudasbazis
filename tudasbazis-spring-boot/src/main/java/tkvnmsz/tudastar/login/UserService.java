@@ -13,6 +13,6 @@ public interface UserService {
 	 * @param registerData
 	 * @return
 	 */
-	boolean register(RegisterData registerData);
+	boolean signup(SignupData registerData);
 
 }
