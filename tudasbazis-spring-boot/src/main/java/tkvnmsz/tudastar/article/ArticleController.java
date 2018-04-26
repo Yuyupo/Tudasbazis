@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import tkvnmsz.tudastar.Pages;
 import tkvnmsz.tudastar.category.Category;
 import tkvnmsz.tudastar.category.CategoryService;
 import tkvnmsz.tudastar.session.SessionData;
@@ -35,7 +36,7 @@ public class ArticleController {
 		List<Category> categories = categoryService.listCategories();
 		model.addAttribute("categories", categories);
 		
-		return "article/postform";
+		return Pages.ARTICLE_POSTFORM;
 	}
 
 	@PostMapping("/post")
@@ -57,9 +58,9 @@ public class ArticleController {
 		int articleId = articleService.post(articlePostData);
 
 		if (articleId != -1) {
-			return "redirect:read/" + articleId;
+			return Pages.ARTICLE_POST_SUCCESSFUL + articleId;
 		} else {
-			return "article/postForm";
+			return Pages.ARTICLE_POSTFORM;
 		}
 	}
 	
@@ -69,7 +70,7 @@ public class ArticleController {
 			Article article = articleService.getById(articleId);
 			model.addAttribute("article", article);
 		}
-		return "article/read";
+		return Pages.ARTICLE_READ;
 	}
 	
 	@GetMapping("/review/accept/{articleId}")
@@ -77,7 +78,7 @@ public class ArticleController {
 		if( articleId != null ) {
 			reviewService.accept(articleId);
 		}
-		return "redirect:read/" + articleId;
+		return Pages.REVIEW_ACCEPTED;
 	}
 	
 	@GetMapping("/review/decline/{articleId}")
@@ -85,7 +86,7 @@ public class ArticleController {
 		if( articleId != null ) {
 			reviewService.decline(articleId);
 		}
-		return "redirect:read/" + articleId;
+		return Pages.REVIEW_DECLINED;
 	}
 	
 }
