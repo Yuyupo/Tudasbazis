@@ -2,54 +2,51 @@ package tkvnmsz.tudastar.login;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import tkvnmsz.tudastar.service.UserServiceDummy;
+import tkvnmsz.tudastar.Pages;
 import tkvnmsz.tudastar.session.SessionData;
 
 @Controller
 public class LoginController {
 	@Autowired
-	private UserService userService; 
-	
+	private UserService userService;
+
 	@Autowired
 	private SessionData sessionData;
-	
+
 	@GetMapping("/login")
 	public String loginForm() {
-		return "login/loginForm";
+		return Pages.LOGIN_FORM;
 	}
 
 	@PostMapping(value = "/login")
-	public String loginSubmit(@ModelAttribute LoginData loginData) {
+	public String loginSubmit(@ModelAttribute LoginData loginData, Model model) {
 		User user = userService.login(loginData);
-		
-		if( user.isLoggedIn() ) {
-			sessionData.setUser(user);
-		}
 
-		return "login/loginResult";
+		if (user.isLoggedIn()) {
+			sessionData.setUser(user);
+			
+			return Pages.LOGIN_SUCCESSFUL;
+		}else {
+			model.addAttribute("message", "Wrong username or passwrod.");
+			return Pages.LOGIN_FAILED;
+		}
 	}
-	
 
 	@GetMapping("/logout")
 	public String logout() {
 		sessionData.unsetUser();
-		return "login/logout";
+		return Pages.LOGOUT;
 	}
-	
+
 	@GetMapping("/status")
 	@ResponseBody
 	public User status() {
 		return sessionData.getUser();
-	}
-	
-	
-	@GetMapping("/session")
-	public String session() {
-		return "session";
 	}
 }

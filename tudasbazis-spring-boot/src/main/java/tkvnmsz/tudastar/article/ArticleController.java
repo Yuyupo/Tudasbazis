@@ -12,18 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 
 import tkvnmsz.tudastar.category.Category;
 import tkvnmsz.tudastar.category.CategoryService;
-import tkvnmsz.tudastar.login.UserService;
 import tkvnmsz.tudastar.session.SessionData;
 
 @RequestMapping("/article")
 @Controller
 public class ArticleController {
-	@Autowired
-	private UserService userService;
 	@Autowired
 	private ArticleService articleService;
 	@Autowired

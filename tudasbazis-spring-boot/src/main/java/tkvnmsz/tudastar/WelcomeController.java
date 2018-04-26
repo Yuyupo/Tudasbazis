@@ -38,13 +38,13 @@ public class WelcomeController {
 	
 	@GetMapping("/")
 	public String welcome(Model model) {
-		return "index";
+		return Pages.MAIN_PAGE;
 	}
 	
-
+	/*
 	@RequestMapping("/test/{id}")
 	public String test(@PathVariable int id, Model model) {
 		model.addAttribute("id", id);
 		return "test";
-	}
+	}*/
 }
