@@ -5,20 +5,9 @@
   <body>
  
 	<div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation"><a href="../index.html">Home</a></li>
-            <li role="presentation" class="active"><a href="#">Profile</a></li>
-            <li role="presentation"><a href="../categories/categories.html">Categories</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Wikiclone</h3>
-      </div>
-     
-
+      <div th:replace="menubar.html"></div>
       <div class="jumbotron">
-      	<img src="../../static/login/owl.png" height="100" width="100">
+      	<img src="login/owl.png" height="100" width="100">
         <h1 th:text="${user.username}">Username</h1>
         <!-- skill/facility/categories -->
          <p>user.skill</p>
