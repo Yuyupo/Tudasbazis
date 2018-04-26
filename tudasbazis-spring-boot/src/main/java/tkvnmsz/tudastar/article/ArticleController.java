@@ -35,7 +35,7 @@ public class ArticleController {
 		List<Category> categories = categoryService.listCategories();
 		model.addAttribute("categories", categories);
 		
-		return "article/postForm";
+		return "article/postform";
 	}
 
 	@PostMapping("/post")

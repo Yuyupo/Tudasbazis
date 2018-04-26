@@ -1,16 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>Wikiclone profile</title>
-
-    <link href="../../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
-  </head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="header.html"></head>
 
   <body>
  
@@ -29,14 +19,13 @@
 
       <div class="jumbotron">
       	<img src="../../static/login/owl.png" height="100" width="100">
-        <h1 th:text="${user.name}">Username</h1>
-        <!-- tudományos fokozat megadása, intézet megadása, hozzáértett kategóriák megjelelölése
-         (soronként egy kategória, több rádiógomb, hogy milyen szinten érti a nyelvet/szaknyelvet) -->
-         <p th:text="${user.skill}">Skill</p>
-         <p th:text="${user.facility}">Facility</p>
-         <p th:text="${user.categories}">Categories i'm not a complete retard at</p>
+        <h1 th:text="${user.username}">Username</h1>
+        <!-- skill/facility/categories -->
+         <p>user.skill</p>
+         <p>user.acility</p>
+         <p>user.Categories i'm not a complete retard at</p>
         <ul class="nav nav-pills" role="tablist">
-        	<!-- ide kell majd if a user admin akkor legyen ott a review -->
+        	<!-- ide kell majd if a user lector akkor legyen ott a review -->
         	<li role="presentation" class="active"><a href="#">New articles to review<span class="badge">3</span></a></li>
         	<li role="presentation" class="active"><a href="#">List users</a></li>
         	<li role="presentation" class="active"><a href="#">Lazy users</a></li>
