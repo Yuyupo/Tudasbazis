@@ -1,10 +1,10 @@
 package tkvnmsz.tudastar.report;
 
 public class Report {
+	private int id;
 	private int targetId;
 	private int userId;
 	private String description;
-	private boolean confirmed;
 
 	public int getTargetId() {
 		return targetId;
@@ -30,12 +30,12 @@ public class Report {
 		this.description = description;
 	}
 
-	public boolean isConfirmed() {
-		return confirmed;
+	public int getId() {
+		return id;
 	}
 
-	public void setConfirmed(boolean confirmed) {
-		this.confirmed = confirmed;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 }

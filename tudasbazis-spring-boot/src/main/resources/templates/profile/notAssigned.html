@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+<body>
+
+	<div class="container">
+		<div th:include="menubar.html" th:with="page=${'profile'}"></div>
+
+
+		<div class="jumbotron">
+			<h1>Not assigned</h1>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Assign</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="article : ${articles}">
+						<tr>
+							<td><a th:href="'/article/read/' + ${article.id}"
+								th:text="${article.title}">Cikk cime </a></td>
+							<td>
+								<form action="/assignTo">
+									<input type="hidden" name="articleId" th:value="${article.id}">
+									<select class="form-control" name="lectorId">
+										<th:block th:each="lectorId : ${lectors[article.id]}">
+											<option th:value="${lectorId}"
+												th:text="${users[lectorId].username} + ' (' + ${users[lectorId].lectoringLevelInCategory[article.categoryId] == 1 ? 'beginner' : 'expert'} + ')'"></option>
+										</th:block>
+									</select> <input type="submit" value="Assign">
+								</form>
+							</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

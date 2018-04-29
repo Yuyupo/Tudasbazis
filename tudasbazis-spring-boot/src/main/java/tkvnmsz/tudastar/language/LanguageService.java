@@ -8,16 +8,4 @@ public interface LanguageService {
 	 * @return list of languages
 	 */
 	List<Language> listLanguages();
-	
-	/**
-	 * mivel térjünk vissza? topiccal kéne, de az nem az igazi. Nem dölt még el...
-	 * @return
-	 */
-	List<Integer> articlesOrderedByTheNumberOfLanguages();
-	
-	/**
-	 * szintén nem tudom mit adjunk vissza... :/ nem lehet azt a cikket, ami a legtöbb nyelven van, mert akkor milyen nyelven adod vissza... hülyeség
-	 * @return
-	 */
-	int translatedToTheMostLanguages();
 }

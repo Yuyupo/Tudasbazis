@@ -1,5 +1,8 @@
 package tkvnmsz.tudastar.login;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
 	public static final User UNKNOWN_USER = new User(-1, "unknown");
 
@@ -7,20 +10,14 @@ public class User {
 	private String username;
 	private boolean loggedIn;
 	private boolean admin;
-	private boolean lector;
+	private Map<Integer, Integer> lectoringLevelInCategory = new HashMap<>();
+	private String institution;
+	private String scientificDegree;
 
 	public User(int userId, String username) {
 		super();
 		this.userId = userId;
 		this.username = username;
-	}
-
-	public User(User user) {
-		super();
-		username = user.username;
-		loggedIn = user.loggedIn;
-		admin = user.admin;
-		lector = user.lector;
 	}
 
 	public int getUserId() {
@@ -55,12 +52,28 @@ public class User {
 		this.admin = admin;
 	}
 
-	public boolean isLector() {
-		return lector;
+	public Map<Integer, Integer> getLectoringLevelInCategory() {
+		return lectoringLevelInCategory;
 	}
 
-	public void setLector(boolean lector) {
-		this.lector = lector;
+	public void setLectoringLevelInCategory(Map<Integer, Integer> lectoringLevelInCategory) {
+		this.lectoringLevelInCategory = lectoringLevelInCategory;
+	}
+
+	public String getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(String institution) {
+		this.institution = institution;
+	}
+
+	public String getScientificDegree() {
+		return scientificDegree;
+	}
+
+	public void setScientificDegree(String scientificDegree) {
+		this.scientificDegree = scientificDegree;
 	}
 
 }

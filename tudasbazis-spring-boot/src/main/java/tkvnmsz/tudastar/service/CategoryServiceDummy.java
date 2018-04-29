@@ -50,7 +50,7 @@ public class CategoryServiceDummy implements CategoryService {
 	@Override
 	public void fillUpNumberOfArticles(List<Category> categories) {
 		for (Category category : categories) {
-			category.setNumberOfArticles(articleService.numberOfArticlesInCategory(category.getId()));
+			category.setNumberOfArticles(articleService.numberOfPublishedArticlesInCategory(category.getId()));
 		}
 	}
 
