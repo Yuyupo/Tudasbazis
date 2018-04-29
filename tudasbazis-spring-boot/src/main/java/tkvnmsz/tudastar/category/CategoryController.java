@@ -33,10 +33,11 @@ public class CategoryController {
 		Category category = categoryService.GetCategoryById(id);
 		model.addAttribute("category", category);
 		
-		List<Article> articlesInCategory = articleService.articlesInCategory(id);
+		List<Article> articlesInCategory = articleService.listPublishedArticlesInCategory(id);
 		model.addAttribute("articles", articlesInCategory);
 		
 		List<Category> subCategories = categoryService.listSubCategories(id);
+		categoryService.fillUpNumberOfArticles(subCategories);
 		model.addAttribute("subcategories", subCategories);
 		
 		return Pages.CATEGORIES_LISTED;

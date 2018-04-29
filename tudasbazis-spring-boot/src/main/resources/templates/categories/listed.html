@@ -25,7 +25,7 @@
 		<h4>Categories like this:</h4>
 		<th:block th:each="subcategory : ${subcategories}">
 			<a th:href="'/category/' + ${subcategory.id}"> <span
-				class="label label-primary" th:text="${subcategory.name}">
+				class="label label-primary" th:text="${subcategory.name} + ' [' + ${subcategory.numberOfArticles} + ']'">
 					Category </span>
 			</a>
 		</th:block>

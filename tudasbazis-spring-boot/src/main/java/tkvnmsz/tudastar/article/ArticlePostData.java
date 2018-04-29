@@ -5,10 +5,19 @@ import java.util.List;
 public class ArticlePostData {
 	private String title;
 	private String content;
-	private List<String> keywords;
+	private List<Integer> keywordIds;
 	private int languageId;
 	private ChangeKind changeKind;
 	private int categoryId;
+	private int parentArticleId;
+
+	public int getParentArticleId() {
+		return parentArticleId;
+	}
+
+	public void setParentArticleId(int parentArticleId) {
+		this.parentArticleId = parentArticleId;
+	}
 
 	public String getTitle() {
 		return title;
@@ -26,12 +35,12 @@ public class ArticlePostData {
 		this.content = content;
 	}
 
-	public List<String> getKeywords() {
-		return keywords;
+	public List<Integer> getKeywordIds() {
+		return keywordIds;
 	}
 
-	public void setKeywords(List<String> keywords) {
-		this.keywords = keywords;
+	public void setKeywordIds(List<Integer> keywordIds) {
+		this.keywordIds = keywordIds;
 	}
 
 	public int getLanguageId() {
@@ -60,8 +69,8 @@ public class ArticlePostData {
 
 	@Override
 	public String toString() {
-		return "ArticlePostData [title=" + title + ", content=" + content + ", keywords=" + keywords + ", languageId="
-				+ languageId + ", changeKind=" + changeKind + ", categoryId=" + categoryId + "]";
+		return "ArticlePostData [title=" + title + ", content=" + content + ", keywordIds=" + keywordIds
+				+ ", languageId=" + languageId + ", changeKind=" + changeKind + ", categoryId=" + categoryId + "]";
 	}
-	
+
 }
