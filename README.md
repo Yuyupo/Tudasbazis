@@ -19,11 +19,10 @@ Action redirects to: /article/post
 description
 Action redirects to: /report/send
 
-##Functional urls
+## Functional urls
 /
 /login
 /logout
-/status - shows login status
 /article/read/{articleId}
 /article/post
 /article/review/accept/{articleId}

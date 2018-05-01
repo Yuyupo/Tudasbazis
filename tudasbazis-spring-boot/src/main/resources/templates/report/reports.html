@@ -6,22 +6,30 @@
 	<div class="container">
 		<div th:include="menubar.html" th:with="page=${'profile'}"></div>
 
-
+	<div class="jumbotron"> 
 		<h1>Reports</h1>
-		<div class="row marketing">
-			<div class="col-lg-6">
+		<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Create a correction</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
 				<th:block th:each="report : ${reports}">
-					<h4>
-						<a th:href="'/article/read/' + ${report.targetId}"
-							th:text="${articles[report.targetId].title}">Article title</a>
-					</h4>
-					<p th:text="${report.description}">Content</p>
-					<p>
-						<a th:href="'/article/post?article='+${report.targetId}+'&kind=correction&report=' + ${report.id}">Create a correction</a>
-					</p>
-				</th:block>
-
-			</div>
+								<th><a th:href="'/article/read/' + ${report.targetId}"
+									th:text="${articles[report.targetId].title}">Article title</a>
+							</th>
+							<th th:text="${report.description}">Content</th>
+							<th>
+								<a th:href="'/article/post?article='+${report.targetId}+'&kind=correction&report=' + ${report.id}">Create a correction</a>
+							</th>
+					</th:block>
+				</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 
