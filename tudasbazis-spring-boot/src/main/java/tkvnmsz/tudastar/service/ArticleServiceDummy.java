@@ -47,7 +47,7 @@ public class ArticleServiceDummy implements ArticleService {
 				"Első tartalom   a ds d a sd a f a fwfa  fa fs fs g sg s fs f sgs gs g s dg gnsog abgfi aof afosofaof o afais hfoahf ahfo afha owa ehf uhsgsgui aehoafousb fbaefiasf asefo flasflefp aslhf pashg shgip ef f b fpasufpi bsfb isf bai fbdfp bpdfb dbf pbfd sbf dfsdf  df sdfbdbfbf d f dfp sdf");
 		article.setCategoryId(0);
 		article.setChangeKind(ChangeKind.CREATE);
-		article.setDate("2018-03-27");
+		//article.setDate("2018-03-27");
 		article.setId(articles.size());
 		article.setReviewed(true);
 		keywords = new ArrayList<>();
@@ -64,7 +64,7 @@ public class ArticleServiceDummy implements ArticleService {
 				"Első tartalom (2. verzió) as  as dad asdasd as da f af awfawf awf  awfa wfawfawf afa fwafaf aw afw faw faw faf awf awf awf qwkf wq fkq onfowef owe owbe bsueg sbigb sboab bqouwbf szibfiabfwif iabfabis fab fisbif sifbisbfiseb fiesbf isuebfisebfai efbaiwf abeif abwifabifabfiab fabwifuab wif abiw baw bfabi wfiabwi faiwb fa bfabw bfaiwb fiabw fabw");
 		article.setCategoryId(0);
 		article.setChangeKind(ChangeKind.MODIFY);
-		article.setDate("2018-03-28");
+		//article.setDate("2018-03-28");
 		article.setId(articles.size());
 		article.setReviewed(true);
 		keywords = new ArrayList<>();
@@ -82,7 +82,7 @@ public class ArticleServiceDummy implements ArticleService {
 				"Első tartalom (3. verzió) as  as dad asdasd as da f af awfawf awf  awfa wfawfawf afa fwafaf aw afw faw faw faf awf awf awf qwkf wq fkq onfowef owe owbe bsueg sbigb sboab bqouwbf szibfiabfwif iabfabis fab fisbif sifbisbfiseb fiesbf isuebfisebfai efbaiwf abeif abwifabifabfiab fabwifuab wif abiw baw bfabi wfiabwi faiwb fa bfabw bfaiwb fiabw fabw");
 		article.setCategoryId(0);
 		article.setChangeKind(ChangeKind.MODIFY);
-		article.setDate("2018-03-28");
+		//article.setDate("2018-03-28");
 		article.setId(articles.size());
 		article.setReviewed(true);
 		keywords = new ArrayList<>();
@@ -100,7 +100,7 @@ public class ArticleServiceDummy implements ArticleService {
 				"Első tartalom (4. verzió) as  as dad asdasd as da f af awfawf awf  awfa wfawfawf afa fwafaf aw afw faw faw faf awf awf awf qwkf wq fkq onfowef owe owbe bsueg sbigb sboab bqouwbf szibfiabfwif iabfabis fab fisbif sifbisbfiseb fiesbf isuebfisebfai efbaiwf abeif abwifabifabfiab fabwifuab wif abiw baw bfabi wfiabwi faiwb fa bfabw bfaiwb fiabw fabw");
 		article.setCategoryId(0);
 		article.setChangeKind(ChangeKind.MODIFY);
-		article.setDate("2018-03-28");
+		//article.setDate("2018-03-28");
 		article.setId(articles.size());
 		article.setReviewed(false);
 		keywords = new ArrayList<>();
@@ -115,7 +115,7 @@ public class ArticleServiceDummy implements ArticleService {
 		article.setContent("Második tartalom");
 		article.setCategoryId(5);
 		article.setChangeKind(ChangeKind.CREATE);
-		article.setDate("2018-03-29");
+		//article.setDate("2018-03-29");
 		article.setId(articles.size());
 		article.setReviewed(true);
 		keywords = new ArrayList<>();
@@ -133,7 +133,7 @@ public class ArticleServiceDummy implements ArticleService {
 		article.setContent("Harmadik tartalom");
 		article.setCategoryId(3);
 		article.setChangeKind(ChangeKind.CREATE);
-		article.setDate("2018-03-29");
+		//article.setDate("2018-03-29");
 		article.setId(articles.size());
 		article.setReviewed(false);
 		article.setWriterId(-1);
@@ -154,7 +154,7 @@ public class ArticleServiceDummy implements ArticleService {
 		article.setCategoryId(articlePostData.getCategoryId());
 		article.setChangeKind(articlePostData.getChangeKind());
 		article.setContent(articlePostData.getContent());
-		article.setDate(new Date().toString());
+		//article.setDate(new Date().toString());
 		article.setId(articles.size());
 		article.setLanguageId(articlePostData.getLanguageId());
 		article.setReviewed(false);

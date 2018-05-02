@@ -10,8 +10,10 @@
 
 			<form method="post">
 
-				Institution:<br> <input type="text" name="institution"
-					th:value="${user.institution}"><br> Scientific degree:<br>
+				<h2>Institution:<br></h2>
+				<input type="text" name="institution"
+					th:value="${user.institution}"><br> 
+				<h2>Scientific degree:<br></h2>
 				<input type="text" name="scientificDegree"
 					th:value="${user.scientificDegree}"><br>
 
@@ -32,7 +34,7 @@
 					<input type="radio" th:name="'category-'+${category.id}" value="2"
 						th:id="'category-'+${category.id}+'-2'"
 						th:checked="${user.lectoringLevelInCategory[category.id] != null && user.lectoringLevelInCategory[category.id] == 2}">
-					<label th:for="'category-'+${category.id}+'-2'">I'm expert</label>
+					<label th:for="'category-'+${category.id}+'-2'">I'm an expert</label>
 					<br>
 				</th:block>
 

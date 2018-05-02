@@ -4,7 +4,7 @@
   <body>																																										
     <div class="container">
 		<div th:include="menubar.html" th:with="page=${'home'}"></div>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
 	  <!-- Indicators -->
 	  <ol class="carousel-indicators">
 	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -15,20 +15,29 @@
 	  <!-- Wrapper for slides -->
 	  <div class="carousel-inner">
 	    <div class="item active">
-	      <div class="jumbotron">
-	        <h1>Publish your own articles!</h1>
-	        <p class="lead">This is a site where you can publish articles about topics you're a master of a field. Our moderators will help keep the wiki as clean as possible.</p>
-	        <p><a class="btn btn-lg btn-success" href="signup" role="button">Sign up today</a></p>
+	    <img alt="" src="login/carousel.jpg">
+	    <div class="carousel-caption">
+			<h1><font color="black">Publish your own articles!</font></h1>
+		        <p class="lead"><font color="black">This is a site where you can publish articles about topics you're a master of a field. Our moderators will help keep the wiki as clean as possible.</font></p>
+		        <p><a class="btn btn-lg btn-success" href="signup" role="button">Sign up today</a></p>
+	      
 	      </div>
 	    </div>
 	
 	    <div class="item">
-	      <h1>Article of the day</h1>
-	        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
+	    <img alt="" src="login/carousel.jpg">
+	    <div class="carousel-caption">
+	    	<h1><font color="black">Article of the day</font></h1>
+	        <p class="lead"><font color="black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</font></p>
+	        <p><a class="btn btn-lg btn-success" href="signup" role="button">Read the whole article</a></p>
 	    </div>
+	      </div>
 	
 	    <div class="item">
-	      <p>kutyacica</p>
+	      <img alt="" src="login/carousel.jpg">
+	      <div class="carousel-caption">
+	      	<font color="black">asdasdasdasd</font>
+	      </div>
 	    </div>
 	  </div>
 	
