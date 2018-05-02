@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+
+<body>
+
+	<div class="container">
+		<div th:include="menubar.html" th:with="page=${'profile'}"></div>
+		<div class="jumbotron">
+			<img src="login/owl.png" height="100" width="100">
+			<h1 th:text="${user.username}">Username</h1>
+			<!-- skill/facility/categories -->
+			<p th:text="${user.scientificDegree}"></p>
+			<p th:text="${user.institution}"></p>
+
+			<p>
+				[
+				<th:block th:each="categoryId : ${user.lectoringLevelInCategory}">
+					<span th:text="${categories[categoryId.key].name}"></span>
+					<span
+						th:text="'(' + ${categoryId.value == 1 ? 'beginner' : 'expert'} + ')'"></span>
+				</th:block>
+				]
+			</p>
+
+
+
+			<ul class="nav nav-pills" role="tablist">
+				<!-- ide kell majd if a user lector akkor legyen ott a review -->
+				<li role="presentation" class="active"><a href="/assign">
+						New articles to assign to a lector </a></li>
+				<li role="presentation" class="active"><a href="/notreviewable">Not
+						reviewable articles </a></li>
+				<li role="presentation" class="active"><a href="/lazyusers">Lazy
+						users</a></li>
+				<li role="presentation" class="active"><a href="/review">Your
+						articles to review </a></li>
+				<li role="presentation" class="active"><a href="/settings">Settings</a></li>
+				<li role="presentation" class="active"><a href="/reports">Reports</a></li>
+			</ul>
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation"><a href="/article/post">Write
+						article</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /container -->
+
+</body>
+</html>

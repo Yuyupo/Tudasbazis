@@ -42,10 +42,6 @@ public class CategoryServiceDummy implements CategoryService {
 				.collect(Collectors.toList());
 	}
 
-	@Override
-	public List<Integer> articlesInCategories(int categoryId) {
-		return null;
-	}
 
 	@Override
 	public void fillUpNumberOfArticles(List<Category> categories) {

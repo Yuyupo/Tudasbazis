@@ -7,7 +7,9 @@ import java.sql.Statement;
 import oracle.jdbc.pool.OracleDataSource;
 
 public class OracleDatabaseConnection {
-	private void connect() {
+	public void connect() {
+		
+		System.out.println("Most");
 		try { 
 		    OracleDataSource ods = new OracleDataSource(); 
 		    Class.forName ("oracle.jdbc.OracleDriver"); 

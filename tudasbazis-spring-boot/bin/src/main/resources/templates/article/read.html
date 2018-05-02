@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+<body>
+
+	<div class="container">
+		<div th:replace="menubar.html"></div>
+
+
+		<div class="jumbotron">
+
+			<div th:switch="${article.reviewed}">
+				Megerősített: <font th:case="true" color="green">IGEN</font> <font
+					th:case="false" color="red">MÉG NEM</font>
+			</div>
+
+			<h1 th:text="${article.title}">A cikk címe</h1>
+			
+			<span th:text="${article.topicId}">EZ NEM FOG KELLENI, CSAK
+				TESZT CUCC</span><br>
+			
+			<a th:href="'/report/'+${article.id}">REPORT</a>
+			
+			<hr>
+
+			<p th:text="${article.content}">A tartalom</p>
+
+			<hr>
+
+			Kulcsszavak
+			<th:block th:each="keywordId : ${article.keywordIDs}">
+				<a th:href="'/article/similar/' + ${keywordId}" th:text="${keywords[keywordId].keyword}"></a>
+			</th:block>
+
+			<hr>
+
+			Szerző: <span
+				th:text="${ article.writerId != -1 ? users[article.writerId].username : 'Anonymus'}"></span>
+
+			<hr>
+
+			Kategória: <span th:text="${categories[article.categoryId].name}"></span>
+
+			<hr>
+
+			Dátum: <span th:text="${article.date}"></span>
+
+			<hr>
+
+			Más nyelveken:<br>
+			<th:block th:each="translation : ${translations}">
+				<a th:href="'/article/read/' + ${translation.id}"
+					th:text="${languages[translation.languageId].name}"></a>
+				<br>
+			</th:block>
+
+
+		</div>
+	</div>
+	<!-- /container -->
+</body>
+</html>

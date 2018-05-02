@@ -1,0 +1,16 @@
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" th:classappend="${page == 'home'} ? active"><a href="/">Home</a></li>
+            <li role="presentation" th:classappend="${page == 'categories'} ? active"><a href="/categories">Categories</a></li>
+            
+            <li th:if="${!user.loggedIn}" role="presentation" th:classappend="${page == 'login'} ? active"><a href="/login">Login</a></li>
+            <li th:if="${!user.loggedIn}" role="presentation" th:classappend="${page == 'signup'} ? active"><a href="/signup">Sign up</a></li>
+            
+            <li th:if="${user.loggedIn}" role="presentation" th:classappend="${page == 'profile'} ? active"><a href="/profile">Profile</a></li>
+            <li th:if="${user.loggedIn}" role="presentation" th:classappend="${page == 'logout'} ? active"><a href="/logout">Log out</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">Wikiclone</h3>
+      </div>
+    

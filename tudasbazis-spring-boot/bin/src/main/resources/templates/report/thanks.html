@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+<body>
+
+	<div class="container">
+		<div th:include="menubar.html" th:with="page=${'profile'}"></div>
+
+
+		<div class="jumbotron">
+			<h1>Thank you for your report!</h1>
+		</div>
+	</div>
+
+</body>
+</html>
