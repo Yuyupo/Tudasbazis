@@ -1,5 +1,6 @@
 package tkvnmsz.tudastar.article;
 
+import java.util.Date;
 import java.util.List;
 
 public class Article {
@@ -10,7 +11,7 @@ public class Article {
 	private int categoryId;
 
 	private int id;
-	private String date;
+	private Date date;
 	private int topicId;
 	private int writerId;
 	private boolean reviewed;
@@ -64,14 +65,6 @@ public class Article {
 		this.id = id;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	public int getTopicId() {
 		return topicId;
 	}
@@ -109,6 +102,14 @@ public class Article {
 		return "Article [title=" + title + ", content=" + content + ", languageId=" + languageId + ", changeKind="
 				+ changeKind + ", categoryId=" + categoryId + ", id=" + id + ", date=" + date + ", topicId=" + topicId
 				+ ", writerId=" + writerId + ", overviewed=" + reviewed + ", keywordIDs=" + keywordIDs + "]";
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }
