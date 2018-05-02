@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+<body>
+
+	<div class="container">
+		<div th:replace="menubar.html"></div>
+
+
+		<div class="jumbotron">
+			<form method="post">
+				<div class="form-group">
+					<h2>Report problem</h2>
+					<br> <label for="title">Description:</label> <textarea class="form-control" rows="10" id="description" name="description" required></textarea>
+				</div>
+
+				<button type="submit" class="btn btn-info">Submit</button>
+			</form>
+		</div>
+
+	</div>
+	<!-- /container -->
+
+</body>
+</html>

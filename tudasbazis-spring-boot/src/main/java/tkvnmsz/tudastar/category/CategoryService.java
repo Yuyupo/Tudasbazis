@@ -11,6 +11,8 @@ public interface CategoryService {
 	 */
 	Category GetCategoryById(int id);
 	
+	
+	
 	/**
 	 * List available categories
 	 * @return list of categories
@@ -29,11 +31,4 @@ public interface CategoryService {
 	 * @return
 	 */
 	List<Category> listSubCategories(int categoryId);
-	
-	/**
-	 * list articles in a specific category
-	 * @param categoryId
-	 * @return list of articles
-	 */
-	List<Integer> articlesInCategories(int categoryId);
 }

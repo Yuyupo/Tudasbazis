@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+
+<body>
+
+	<div class="container">
+		<div th:include="menubar.html" th:with="page=${'profile'}"></div>
+		<div class="jumbotron">
+
+			<form method="post">
+
+				Institution:<br> <input type="text" name="institution"
+					th:value="${user.institution}"><br> Scientific degree:<br>
+				<input type="text" name="scientificDegree"
+					th:value="${user.scientificDegree}"><br>
+
+				<th:block th:each="category : ${categories}">
+					<h3 th:text="${category.name}"></h3>
+
+					<input type="radio" th:name="'category-'+${category.id}" value="0"
+						th:id="'category-'+${category.id}+'-0'"
+						th:checked="${user.lectoringLevelInCategory[category.id] == null || user.lectoringLevelInCategory[category.id] == 0}">
+					<label th:for="'category-'+${category.id}+'-0'">Not at all</label>
+
+					<input type="radio" th:name="'category-'+${category.id}" value="1"
+						th:id="'category-'+${category.id}+'-1'"
+						th:checked="${user.lectoringLevelInCategory[category.id] != null && user.lectoringLevelInCategory[category.id] == 1}">
+					<label th:for="'category-'+${category.id}+'-1'">I know a
+						little about it</label>
+
+					<input type="radio" th:name="'category-'+${category.id}" value="2"
+						th:id="'category-'+${category.id}+'-2'"
+						th:checked="${user.lectoringLevelInCategory[category.id] != null && user.lectoringLevelInCategory[category.id] == 2}">
+					<label th:for="'category-'+${category.id}+'-2'">I'm expert</label>
+					<br>
+				</th:block>
+
+				<input type="submit" value="Send">
+			</form>
+
+		</div>
+	</div>
+	<!-- /container -->
+
+</body>
+</html>

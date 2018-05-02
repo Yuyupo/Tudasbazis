@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header.html"></head>
+<body>
+
+	<div class="container">
+		<div th:include="menubar.html" th:with="page=${'categories'}"></div>
+
+
+		<div class="jumbotron">
+			<h1>Categories</h1>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Articles no.</th>
+					</tr>
+				</thead>
+				<tbody>
+					<th:block th:each="category : ${categories}">
+						<tr>
+							<td><a th:href="'/category/' + ${category.id}"
+								th:text="${category.name}">Categoria neve</a></td>
+							<td th:text="${category.numberOfArticles}">12</td>
+						</tr>
+					</th:block>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

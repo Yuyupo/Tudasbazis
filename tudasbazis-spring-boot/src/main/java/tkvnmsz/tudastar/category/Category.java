@@ -6,6 +6,14 @@ public class Category {
 	private int parentId;
 	private int numberOfArticles = -1;
 
+	
+	public Category(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.parentId = -1;
+	}
+	
 	public Category(int id, String name, int parentId) {
 		super();
 		this.id = id;
