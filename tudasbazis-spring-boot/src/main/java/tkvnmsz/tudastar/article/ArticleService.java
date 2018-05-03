@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.article;
 
 import java.util.List;
+import java.util.Map;
 
 import tkvnmsz.tudastar.login.User;
 
@@ -23,13 +24,13 @@ public interface ArticleService {
 	 * Get the most times modified article
 	 * @return id of returned article
 	 */
-	int mostTimesModifiedArticle();
+	int worstAuthor();
 	
 	/**
 	 * get the most times corrected article
 	 * @return id of returned article
 	 */
-	int mostTimesCorrectedArticle();
+	List<Article> mostTimesCorrectedArticle();
 	
 	/**
 	 * get the number of articles in a category
@@ -50,7 +51,7 @@ public interface ArticleService {
 	 * mivel térjünk vissza? topiccal kéne, de az nem az igazi. Nem dölt még el...
 	 * @return
 	 */
-	List<Integer> articlesOrderedByTheNumberOfLanguages();
+	List<Article> articlesOrderedByTheNumberOfLanguages();
 	
 	/**
 	 * szintén nem tudom mit adjunk vissza... :/ nem lehet azt a cikket, ami a legtöbb nyelven van, mert akkor milyen nyelven adod vissza... hülyeség
@@ -68,7 +69,7 @@ public interface ArticleService {
 	 * list only the id and title of articles
 	 * @return list of articles (only id and title fed)
 	 */
-	List<Article> listAllArticlesIdTitle();
+	Map<Integer, Article> listAllArticlesIdTitle();
 	
 	/**
 	 * list articles that are the translations of the give article

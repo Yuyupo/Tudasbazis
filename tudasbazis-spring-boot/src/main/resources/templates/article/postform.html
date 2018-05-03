@@ -21,8 +21,8 @@
 				<div class="form-group">
 					<label for="sel1">Choose category:</label> <select
 						class="form-control" id="sel1" name="categoryId">
-						<th:block th:each="category : ${categories}">
-							<option th:value="${category.id}" th:text="${category.name}" th:selected="${article?.categoryId == category.id}"></option>
+						<th:block th:each="category : ${categories.keySet()}">
+							<option th:value="${category}" th:text="${categories.get(category).name}" th:selected="${article?.categoryId == category}"></option>
 						</th:block>
 					</select>
 				</div>
@@ -31,8 +31,8 @@
 					<label for="sel2">Choose keywords(Hold shift to select more
 						than one):</label> <select multiple class="form-control" id="sel2"
 						name="keywordIds">
-						<th:block th:each="keyword : ${keywords}">
-							<option th:value="${keyword.id}" th:text="${keyword.keyword}" th:selected="${article != nulll && article?.keywordIDs.contains(keyword.id)}"></option>
+						<th:block th:each="keyword : ${keywords.keySet()}">
+							<option th:value="${keyword}" th:text="${keywords.get(keyword).keyword}" th:selected="${article != null && article?.keywordIDs?.contains(keyword)}"></option>
 						</th:block>
 					</select>
 				</div>
@@ -50,8 +50,8 @@
 				<div class="form-group">
 					<label for="sel3">Choose language:</label> <select class="form-control" id="sel3"
 						name="languageId">
-						<th:block th:each="language : ${languages}">
-							<option th:value="${language.id}" th:text="${language.name}" th:selected="${article?.languageId == language.id}"></option>
+						<th:block th:each="language : ${languages.keySet()}">
+							<option th:value="${language}" th:text="${languages.get(language).name}" th:selected="${article?.languageId == language}"></option>
 						</th:block>
 					</select>
 				</div>

@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.category;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,9 +22,9 @@ public class CategoryController {
 	
 	@GetMapping("/categories")
 	public String showCategories(Model model) {
-		List<Category> categories = categoryService.listCategories();
-		categoryService.fillUpNumberOfArticles(categories);
-		model.addAttribute("categories", categories);
+		Map<Integer, Category> listCategories = categoryService.listCategories();
+		categoryService.fillUpNumberOfArticles(listCategories);
+		model.addAttribute("categories", listCategories);
 		
 		return Pages.CATEGORIES;
 	}
@@ -36,9 +37,9 @@ public class CategoryController {
 		List<Article> articlesInCategory = articleService.listPublishedArticlesInCategory(id);
 		model.addAttribute("articles", articlesInCategory);
 		
-		List<Category> subCategories = categoryService.listSubCategories(id);
-		categoryService.fillUpNumberOfArticles(subCategories);
-		model.addAttribute("subcategories", subCategories);
+		Map<Integer, Category> listSubCategories = categoryService.listSubCategories(id);
+		categoryService.fillUpNumberOfArticles(listSubCategories);
+		model.addAttribute("subcategories", listSubCategories);
 		
 		return Pages.CATEGORIES_LISTED;
 	}

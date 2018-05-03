@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.login;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 	/**
@@ -36,7 +37,7 @@ public interface UserService {
 	 * list all users
 	 * @return list of users
 	 */
-	List<User> listUsers();
+	Map<Integer, User> listUsers();
 	
 	/**
 	 * list all lectors of a category, orderd by the level

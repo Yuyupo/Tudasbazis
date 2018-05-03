@@ -11,6 +11,16 @@ public class ArticlePostData {
 	private int categoryId;
 	private int parentArticleId;
 
+	private int originalArticle;
+
+	public int getOriginalArticle() {
+		return originalArticle;
+	}
+
+	public void setOriginalArticle(int originalArticle) {
+		this.originalArticle = originalArticle;
+	}
+
 	public int getParentArticleId() {
 		return parentArticleId;
 	}

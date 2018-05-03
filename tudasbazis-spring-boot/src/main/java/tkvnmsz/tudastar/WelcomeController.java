@@ -16,6 +16,7 @@
 
 package tkvnmsz.tudastar;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +28,36 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import tkvnmsz.tudastar.article.Article;
+import tkvnmsz.tudastar.article.ArticleService;
 import tkvnmsz.tudastar.login.User;
+import tkvnmsz.tudastar.login.UserService;
 import tkvnmsz.tudastar.session.SessionData;
 
 @Controller
 public class WelcomeController {
+	@Autowired
+	private ArticleService articleService;
+	@Autowired
+	private UserService userService;
+	//CSAK VÉKONY AZ AJTÓ :/
 	@Autowired
 	private SessionData sessionData;
 	
 	
 	@GetMapping("/")
 	public String welcome(Model model) {
+		int mostLanguagesId = articleService.translatedToTheMostLanguages();
+		Article mostLanguages = articleService.getById(mostLanguagesId);
+		model.addAttribute("mostLanguages", mostLanguages);
+		
+		int worstAuthor = articleService.worstAuthor();
+		User worstUser = userService.getById(worstAuthor);
+		model.addAttribute("worstUser", worstUser);
+		
+		List<Article> mostTimesCorrectedArticle = articleService.mostTimesCorrectedArticle();
+		model.addAttribute("mostCorrected", mostTimesCorrectedArticle);
+		
 		return Pages.MAIN_PAGE;
 	}
 	

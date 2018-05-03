@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.report;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,15 +48,15 @@ public class ReportController {
 	
 	
 	@GetMapping("/reports")
-	public String showReports(Model model) {
+	public String showReports(Model model) { 
 		List<Report> reports = reportService.listReports();
 		model.addAttribute("reports", reports);
 		
-		List<Article> listAllArticlesIdTitle = articleService.listAllArticlesIdTitle();
+		Map<Integer, Article> listAllArticlesIdTitle = articleService.listAllArticlesIdTitle();
 		model.addAttribute("articles", listAllArticlesIdTitle);
 		
 		
-		List<User> listUsers = userService.listUsers();
+		Map<Integer, User> listUsers = userService.listUsers();
 		model.addAttribute("users", listUsers);
 		
 		return Pages.REPORTS;

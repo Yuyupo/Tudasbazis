@@ -19,11 +19,12 @@ public class Parser {
 		parsed.setId(resultSet.getInt(index++));
 		parsed.setTitle(resultSet.getString(index++));
 		parsed.setDate(resultSet.getDate(index++));
+		index++; // SKIP MODIFICATIONTYPE
 		parsed.setContent(resultSet.getString(index++));
 		parsed.setWriterId(resultSet.getInt(index++));
 		parsed.setTopicId(resultSet.getInt(index++));
 		parsed.setLanguageId(resultSet.getInt(index++));
-		parsed.setReviewed(resultSet.getBoolean(index++));
+		parsed.setReviewed(resultSet.getInt(index++) == 1);
 		
 		return parsed;
 	}
