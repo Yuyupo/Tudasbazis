@@ -17,11 +17,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<th:block th:each="category : ${categories}">
+					<th:block th:each="category : ${categories.keySet()}">
 						<tr>
-							<td><a th:href="'/category/' + ${category.id}"
-								th:text="${category.name}">Categoria neve</a></td>
-							<td th:text="${category.numberOfArticles}">12</td>
+							<td><a th:href="'/category/' + ${category}"
+								th:text="${categories.get(category).name}">kategoria neve</a></td>
+							<td th:text="${categories.get(category).numberOfArticles}">12</td>
 						</tr>
 					</th:block>
 				</tbody>

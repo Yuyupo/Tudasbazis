@@ -16,6 +16,10 @@ import oracle.jdbc.pool.OracleDataSource;
 public class OracleDatabase {
 
 	// REQUEST
+	public static void request(String query, QueryResultProcessor processor) {
+		request(query, null, processor);
+	}
+
 	public static void request(String query, StatementParameterizer parameterizer, QueryResultProcessor processor) {
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -29,7 +33,9 @@ public class OracleDatabase {
 
 			stmt = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			parameterizer.parameterize(stmt);
+			if (parameterizer != null) {
+				parameterizer.parameterize(stmt);
+			}
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -52,7 +58,7 @@ public class OracleDatabase {
 			} catch (SQLException se) {
 				se.printStackTrace();
 			}
-			
+
 			try {
 				if (conn != null) {
 					conn.close();
@@ -63,7 +69,11 @@ public class OracleDatabase {
 		}
 	}
 
-	public static void execute(String query, StatementParameterizer parameterizer) throws SQLException {
+	public static void execute(String query) {
+		execute(query, null);
+	}
+
+	public static void execute(String query, StatementParameterizer parameterizer) {
 		// System.out.println( query );
 
 		Connection conn = null;
@@ -77,18 +87,17 @@ public class OracleDatabase {
 
 			stmt = conn.prepareStatement(query, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-			parameterizer.parameterize(stmt);
-
-			boolean result = stmt.execute(query);
-
-			if (!result) {
-				JOptionPane.showMessageDialog(null, "SQL kérés sikertelen!\n" + stmt.getWarnings(), "Hiba!",
-						JOptionPane.ERROR_MESSAGE);
+			if (parameterizer != null) {
+				parameterizer.parameterize(stmt);
 			}
+			
+			stmt.execute();
 
 			stmt.close();
 			conn.close();
 
+		} catch (SQLException se) {
+			se.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {

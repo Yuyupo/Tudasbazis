@@ -51,7 +51,17 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
-      
+     
+     LEGTÖBB NYELVRE FORDÍTOTTÁK:
+     <a th:href="'/article/read/'+${mostLanguages.id}" th:text="${mostLanguages.title}"></a><br>
+     LEGTÖBBSZÖR JAVÍTOTTÁK A CIKKEIT:
+     <span th:text="${worstUser.username}"></span><br/>
+     
+     Legtöbbször javÍtott cikkek listája:
+     <th:block th:each="mostCorrected : ${mostCorrected}">
+     	<a th:href="'/article/read/'+${mostCorrected.id}" th:text="${mostCorrected.title}"></a><br>
+     </th:block>
+     
  	<!--    <div class="row marketing">
         <div class="col-lg-6">
           <h4 th:text="${article.title}"><a href="#">Article title</a></h4>

@@ -34,8 +34,8 @@ public class ProfileController {
 
 	@GetMapping("/profile")
 	public String showProfile(Model model) {
-		List<Category> categories = categoryService.listCategories();
-		model.addAttribute("categories", categories);
+		Map<Integer, Category> listCategories = categoryService.listCategories();
+		model.addAttribute("categories", listCategories);
 		
 		return Pages.PROFILE;
 	}
@@ -51,7 +51,7 @@ public class ProfileController {
 	@GetMapping("/assign")
 	public String showAssign(Model model) {
 		List<Article> notReviewedArticles = articleService.notAssignedArticles();
-		model.addAttribute("articles", notReviewedArticles);
+		model.addAttribute("articles", notReviewedArticles); 
 		
 		Map<Integer, List<Integer>> lectors = new HashMap<>();
 		for (Article article : notReviewedArticles) {
@@ -60,7 +60,7 @@ public class ProfileController {
 		}
 		model.addAttribute("lectors", lectors);
 		
-		List<User> listUsers = userService.listUsers();
+		Map<Integer, User> listUsers = userService.listUsers();
 		model.addAttribute("users", listUsers);
 		
 		
@@ -95,8 +95,8 @@ public class ProfileController {
 	
 	@GetMapping("/settings")
 	public String showSettings(Model model) {
-		List<Category> categories = categoryService.listCategories();
-		model.addAttribute("categories", categories);
+		Map<Integer, Category> listCategories = categoryService.listCategories();
+		model.addAttribute("categories", listCategories);
 		
 		return Pages.SETTINGS;
 	}

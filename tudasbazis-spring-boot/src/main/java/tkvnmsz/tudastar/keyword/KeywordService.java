@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.keyword;
 
 import java.util.List;
+import java.util.Map;
 
 public interface KeywordService {
 	/*
@@ -8,5 +9,5 @@ public interface KeywordService {
 	List<Keyword> getKeywordsLike(String keyword);
 	List<Integer> similarArticles(List<Integer> keywordIDs);*/
 	
-	List<Keyword> listKeywords();
+	Map<Integer, Keyword> listKeywords();
 }

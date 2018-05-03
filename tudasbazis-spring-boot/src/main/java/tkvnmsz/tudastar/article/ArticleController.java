@@ -54,13 +54,13 @@ public class ArticleController {
 			model.addAttribute("article", article);
 		}
 		
-		List<Keyword> keywords = keywordService.listKeywords();
-		model.addAttribute("keywords", keywords);
+		Map<Integer, Keyword> listKeywords = keywordService.listKeywords();
+		model.addAttribute("keywords", listKeywords);
 
-		List<Category> categories = categoryService.listCategories();
-		model.addAttribute("categories", categories);
+		Map<Integer, Category> listCategories = categoryService.listCategories();
+		model.addAttribute("categories", listCategories);
 
-		List<Language> listLanguages = languageService.listLanguages();
+		Map<Integer, Language> listLanguages = languageService.listLanguages();
 		model.addAttribute("languages", listLanguages);
 
 		List<Article> listPublishedArticlesIdTitle = articleService.listPublishedArticlesIdTitle();
@@ -80,12 +80,14 @@ public class ArticleController {
 				kind = ChangeKind.MODIFY;
 			} else {
 				kind = ChangeKind.CORRECTION;
+				int originalArticleId = Integer.parseInt(queryParameters.get("article"));
+				articlePostData.setOriginalArticle(originalArticleId);
 				int reportId = Integer.parseInt(queryParameters.get("report"));
 				reportService.deleteReport(reportId); 
 			}
 		}
 		articlePostData.setChangeKind(kind);
-
+		
 		int articleId = articleService.post(articlePostData);
 
 		if (articleId != -1) {
@@ -102,19 +104,19 @@ public class ArticleController {
 			return Pages.ARTICLE_READ_FAILED;
 		}
 
-		List<Keyword> listKeywords = keywordService.listKeywords();
+		Map<Integer, Keyword> listKeywords = keywordService.listKeywords();
 		model.addAttribute("keywords", listKeywords);
 
 		Article article = articleService.getById(articleId);
 		model.addAttribute("article", article);
 
-		List<User> listUsers = userService.listUsers();
+		Map<Integer, User> listUsers = userService.listUsers();
 		model.addAttribute("users", listUsers);
 
-		List<Category> listCategories = categoryService.listCategories();
+		Map<Integer, Category> listCategories = categoryService.listCategories();
 		model.addAttribute("categories", listCategories);
 
-		List<Language> listLanguages = languageService.listLanguages();
+		Map<Integer, Language> listLanguages = languageService.listLanguages();
 		model.addAttribute("languages", listLanguages);
 
 		List<Article> listTranslationsOf = articleService.listTranslationsOf(articleId);

@@ -17,24 +17,27 @@
 				<input type="text" name="scientificDegree"
 					th:value="${user.scientificDegree}"><br>
 
-				<th:block th:each="category : ${categories}">
-					<h3 th:text="${category.name}"></h3>
+				<th:block th:each="category : ${categories.keySet()}">
+					<h3 th:text="${categories.get(category).name}"></h3>
 
-					<input type="radio" th:name="'category-'+${category.id}" value="0"
-						th:id="'category-'+${category.id}+'-0'"
-						th:checked="${user.lectoringLevelInCategory[category.id] == null || user.lectoringLevelInCategory[category.id] == 0}">
-					<label th:for="'category-'+${category.id}+'-0'">Not at all</label>
-
-					<input type="radio" th:name="'category-'+${category.id}" value="1"
-						th:id="'category-'+${category.id}+'-1'"
-						th:checked="${user.lectoringLevelInCategory[category.id] != null && user.lectoringLevelInCategory[category.id] == 1}">
-					<label th:for="'category-'+${category.id}+'-1'">I know a
+					<input type="radio" th:name="'category-'+${category}" value="0"
+						th:id="'category-'+${category}+'-0'"
+						th:checked="${user.lectoringLevelInCategory.get(category) == null || user.lectoringLevelInCategory.get(category) == 0}">
+					<label th:for="'category-'+${category}+'-0'">Not at all</label>
+					
+					
+					<input type="radio" th:name="'category-'+${category}" value="1"
+						th:id="'category-'+${category}+'-1'"
+						th:checked="${user.lectoringLevelInCategory.get(category) != null && user.lectoringLevelInCategory.get(category) == 1}">
+					<label th:for="'category-'+${category}+'-1'">I know a
 						little about it</label>
+					
 
-					<input type="radio" th:name="'category-'+${category.id}" value="2"
-						th:id="'category-'+${category.id}+'-2'"
-						th:checked="${user.lectoringLevelInCategory[category.id] != null && user.lectoringLevelInCategory[category.id] == 2}">
-					<label th:for="'category-'+${category.id}+'-2'">I'm an expert</label>
+					<input type="radio" th:name="'category-'+${category}" value="2"
+						th:id="'category-'+${category}+'-2'"
+						th:checked="${user.lectoringLevelInCategory.get(category) != null && user.lectoringLevelInCategory.get(category) == 2}">
+					<label th:for="'category-'+${category}+'-2'">I'm an expert</label>
+
 					<br>
 				</th:block>
 

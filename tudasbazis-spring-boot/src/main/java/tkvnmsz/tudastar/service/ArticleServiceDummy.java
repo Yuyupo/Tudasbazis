@@ -1,7 +1,7 @@
 package tkvnmsz.tudastar.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +18,10 @@ import tkvnmsz.tudastar.category.Category;
 import tkvnmsz.tudastar.category.CategoryService;
 import tkvnmsz.tudastar.login.User;
 import tkvnmsz.tudastar.login.UserService;
+import tkvnmsz.tudastar.service.database.ListDataFetcher;
+import tkvnmsz.tudastar.service.database.OracleDatabase;
+import tkvnmsz.tudastar.service.database.Parser;
+import tkvnmsz.tudastar.service.database.SimpleDataFetcher;
 import tkvnmsz.tudastar.session.SessionData;
 
 @Service
@@ -29,254 +33,257 @@ public class ArticleServiceDummy implements ArticleService {
 	@Autowired
 	private SessionData sessionData;
 
-	List<Article> articles = new ArrayList<>();
-	List<Integer> topics = new ArrayList<>();
-	Map<Integer, Integer> assignedLectors = new HashMap<>();
-
-	public ArticleServiceDummy() {
-		populate();
-	}
-
-	private void populate() {
-		Article article;
-		List<Integer> keywords;
-
-		article = new Article();
-		article.setTitle("Első cím");
-		article.setContent(
-				"Első tartalom   a ds d a sd a f a fwfa  fa fs fs g sg s fs f sgs gs g s dg gnsog abgfi aof afosofaof o afais hfoahf ahfo afha owa ehf uhsgsgui aehoafousb fbaefiasf asefo flasflefp aslhf pashg shgip ef f b fpasufpi bsfb isf bai fbdfp bpdfb dbf pbfd sbf dfsdf  df sdfbdbfbf d f dfp sdf");
-		article.setCategoryId(0);
-		article.setChangeKind(ChangeKind.CREATE);
-		//article.setDate("2018-03-27");
-		article.setId(articles.size());
-		article.setReviewed(true);
-		keywords = new ArrayList<>();
-		keywords.add(0);
-		article.setKeywordIDs(keywords);
-		article.setLanguageId(0);
-		article.setTopicId(0);
-		articles.add(article);
-		topics.add(0);
-
-		article = new Article();
-		article.setTitle("Első cím (2. verzió)");
-		article.setContent(
-				"Első tartalom (2. verzió) as  as dad asdasd as da f af awfawf awf  awfa wfawfawf afa fwafaf aw afw faw faw faf awf awf awf qwkf wq fkq onfowef owe owbe bsueg sbigb sboab bqouwbf szibfiabfwif iabfabis fab fisbif sifbisbfiseb fiesbf isuebfisebfai efbaiwf abeif abwifabifabfiab fabwifuab wif abiw baw bfabi wfiabwi faiwb fa bfabw bfaiwb fiabw fabw");
-		article.setCategoryId(0);
-		article.setChangeKind(ChangeKind.MODIFY);
-		//article.setDate("2018-03-28");
-		article.setId(articles.size());
-		article.setReviewed(true);
-		keywords = new ArrayList<>();
-		keywords.add(0);
-		keywords.add(1);
-		keywords.add(2);
-		article.setKeywordIDs(keywords);
-		article.setLanguageId(1);
-		article.setTopicId(0);
-		articles.add(article);
-
-		article = new Article();
-		article.setTitle("Első cím (3. verzió)");
-		article.setContent(
-				"Első tartalom (3. verzió) as  as dad asdasd as da f af awfawf awf  awfa wfawfawf afa fwafaf aw afw faw faw faf awf awf awf qwkf wq fkq onfowef owe owbe bsueg sbigb sboab bqouwbf szibfiabfwif iabfabis fab fisbif sifbisbfiseb fiesbf isuebfisebfai efbaiwf abeif abwifabifabfiab fabwifuab wif abiw baw bfabi wfiabwi faiwb fa bfabw bfaiwb fiabw fabw");
-		article.setCategoryId(0);
-		article.setChangeKind(ChangeKind.MODIFY);
-		//article.setDate("2018-03-28");
-		article.setId(articles.size());
-		article.setReviewed(true);
-		keywords = new ArrayList<>();
-		keywords.add(1);
-		keywords.add(2);
-		keywords.add(3);
-		article.setKeywordIDs(keywords);
-		article.setLanguageId(2);
-		article.setTopicId(0);
-		articles.add(article);
-
-		article = new Article();
-		article.setTitle("Első cím (4. verzió)");
-		article.setContent(
-				"Első tartalom (4. verzió) as  as dad asdasd as da f af awfawf awf  awfa wfawfawf afa fwafaf aw afw faw faw faf awf awf awf qwkf wq fkq onfowef owe owbe bsueg sbigb sboab bqouwbf szibfiabfwif iabfabis fab fisbif sifbisbfiseb fiesbf isuebfisebfai efbaiwf abeif abwifabifabfiab fabwifuab wif abiw baw bfabi wfiabwi faiwb fa bfabw bfaiwb fiabw fabw");
-		article.setCategoryId(0);
-		article.setChangeKind(ChangeKind.MODIFY);
-		//article.setDate("2018-03-28");
-		article.setId(articles.size());
-		article.setReviewed(false);
-		keywords = new ArrayList<>();
-		keywords.add(3);
-		article.setKeywordIDs(keywords);
-		article.setLanguageId(3);
-		article.setTopicId(0);
-		articles.add(article);
-
-		article = new Article();
-		article.setTitle("Második cím");
-		article.setContent("Második tartalom");
-		article.setCategoryId(5);
-		article.setChangeKind(ChangeKind.CREATE);
-		//article.setDate("2018-03-29");
-		article.setId(articles.size());
-		article.setReviewed(true);
-		keywords = new ArrayList<>();
-		keywords.add(1);
-		keywords.add(2);
-		keywords.add(3);
-		article.setKeywordIDs(keywords);
-		article.setLanguageId(2);
-		article.setTopicId(1);
-		articles.add(article);
-		topics.add(1);
-
-		article = new Article();
-		article.setTitle("Harmadik cím");
-		article.setContent("Harmadik tartalom");
-		article.setCategoryId(3);
-		article.setChangeKind(ChangeKind.CREATE);
-		//article.setDate("2018-03-29");
-		article.setId(articles.size());
-		article.setReviewed(false);
-		article.setWriterId(-1);
-		keywords = new ArrayList<>();
-		keywords.add(1);
-		keywords.add(2);
-		keywords.add(3);
-		article.setKeywordIDs(keywords);
-		article.setLanguageId(2);
-		article.setTopicId(2);
-		articles.add(article);
-		topics.add(2);
-	}
-
 	@Override
 	public int post(ArticlePostData articlePostData) {
-		Article article = new Article();
-		article.setCategoryId(articlePostData.getCategoryId());
-		article.setChangeKind(articlePostData.getChangeKind());
-		article.setContent(articlePostData.getContent());
-		//article.setDate(new Date().toString());
-		article.setId(articles.size());
-		article.setLanguageId(articlePostData.getLanguageId());
-		article.setReviewed(false);
-		article.setTitle(articlePostData.getTitle());
-		article.setKeywordIDs(articlePostData.getKeywordIds());
 
-		int topicId;
+		if (articlePostData.getChangeKind() == ChangeKind.CORRECTION) {
 
-		if (articlePostData.getParentArticleId() == -1) {
-			topicId = topics.size();
-			topics.add(topicId);
-		} else {
 			Article parentArticle = getById(articlePostData.getParentArticleId());
-			topicId = parentArticle.getTopicId();
+			int topicId = parentArticle.getTopicId();
+			int languageId = articlePostData.getLanguageId();
+
+			// SELECT WHERE topic id = ... alnguageid = ....
+			OracleDatabase.execute(
+					"UPDATE H675212.W_ARTICLE SET TITLE = ? , CONTENT = ?,  MODIFCATIONCOUNTER = MODIFCATIONCOUNTER+1 WHERE ID = ?",
+					stmt -> {
+						int index = 0;
+						stmt.setString(++index, articlePostData.getTitle());
+						stmt.setString(++index, articlePostData.getContent());
+						stmt.setInt(++index, articlePostData.getOriginalArticle());
+					});
+
+			OracleDatabase.execute("DELETE FROM W_KEYWORD_MARK WHERE ARTICLE_ID = ?",
+					stmt -> stmt.setInt(1, articlePostData.getOriginalArticle()));
+
+			List<Integer> keywordIds = articlePostData.getKeywordIds();
+
+			SimpleDataFetcher<Integer> idFetcher2 = new SimpleDataFetcher<>(resultSet -> resultSet.getInt(1));
+			OracleDatabase.request("SELECT MAX(ID) FROM W_KEYWORD_MARK", idFetcher2);
+			int keywordId = idFetcher2.getData();
+			if (keywordIds != null) {
+				for (Integer integer : keywordIds) {
+
+					int masikKeywordId = ++keywordId;
+
+					OracleDatabase.execute(
+							"Insert into H675212.W_KEYWORD_MARK (ID, ARTICLE_ID, KEYWORD_ID) values (?,?,?)", stmt -> {
+								int index = 0;
+								stmt.setInt(++index, masikKeywordId);
+								stmt.setInt(++index, articlePostData.getOriginalArticle());
+								stmt.setInt(++index, integer);
+
+							});
+
+				}
+			}
+			return articlePostData.getOriginalArticle();
+		} else {
+
+			int topicId;
+
+			if (articlePostData.getParentArticleId() == -1) {
+				SimpleDataFetcher<Integer> idFetcher = new SimpleDataFetcher<>(resultSet -> resultSet.getInt(1));
+				OracleDatabase.request("SELECT MAX(ID) FROM W_TOPIC", idFetcher);
+				topicId = idFetcher.getData() + 1;
+
+				OracleDatabase.execute("Insert into H675212.W_TOPIC (ID) values (?)", stmt -> stmt.setInt(1, topicId));
+
+			} else {
+				Article parentArticle = getById(articlePostData.getParentArticleId());
+				topicId = parentArticle.getTopicId();
+			}
+
+			SimpleDataFetcher<Integer> idFetcher = new SimpleDataFetcher<>(resultSet -> resultSet.getInt(1));
+			OracleDatabase.request("SELECT MAX(ID) FROM W_ARTICLE", idFetcher);
+			Integer articleNewId = idFetcher.getData();
+
+			OracleDatabase.execute(
+					"Insert into H675212.W_ARTICLE (ID,TITLE,CREATION_DATE,MODIFICATION_TYPE,CONTENT,AUTHOR_ID,TOPIC_ID,LANGUAGE_ID,APPROVED,VISITED,MODIFCATIONCOUNTER) values (?,?,?,?,?,?,?,?,?,?,?)",
+					stmt -> {
+						int index = 0;
+						stmt.setInt(++index, articleNewId + 1);
+						stmt.setString(++index, articlePostData.getTitle());
+						stmt.setDate(++index, new Date(System.currentTimeMillis()));
+						stmt.setInt(++index, 1); // Tökmindegy
+						stmt.setString(++index, articlePostData.getContent());
+						stmt.setInt(++index, sessionData.getUser().getUserId());
+						stmt.setInt(++index, topicId); // Nem biztos
+						stmt.setInt(++index, articlePostData.getLanguageId());
+						stmt.setInt(++index, 0);
+						stmt.setInt(++index, 0);
+						stmt.setInt(++index, 0);
+					});
+
+			SimpleDataFetcher<Integer> maxIdCategoryFetcher = new SimpleDataFetcher<>(resultSet -> resultSet.getInt(1));
+			OracleDatabase.request("SELECT MAX(ID) FROM W_DISCUSSED_CATEGORY", maxIdCategoryFetcher);
+			Integer maxIdCategory = maxIdCategoryFetcher.getData();
+
+			OracleDatabase.execute("DELETE FROM W_KEYWORD_MARK WHERE ARTICLE_ID = ?",
+					stmt -> stmt.setInt(1, articleNewId + 1));
+
+			OracleDatabase.execute(
+					"Insert into H675212.W_DISCUSSED_CATEGORY (ID, ARTICLE_ID, CATEGORY_ID) values (?,?,?)", stmt -> {
+						int index = 0;
+						stmt.setInt(++index, maxIdCategory + 1);
+						stmt.setInt(++index, articleNewId + 1);
+						stmt.setInt(++index, articlePostData.getCategoryId());
+
+					});
+
+			List<Integer> keywordIds = articlePostData.getKeywordIds();
+
+			SimpleDataFetcher<Integer> idFetcher2 = new SimpleDataFetcher<>(resultSet -> resultSet.getInt(1));
+			OracleDatabase.request("SELECT MAX(ID) FROM W_KEYWORD_MARK", idFetcher2);
+			int keywordId = idFetcher2.getData();
+
+			for (Integer integer : keywordIds) {
+
+				int masikKeywordId = ++keywordId;
+
+				OracleDatabase.execute("Insert into H675212.W_KEYWORD_MARK (ID, ARTICLE_ID, KEYWORD_ID) values (?,?,?)",
+						stmt -> {
+							int index = 0;
+							stmt.setInt(++index, masikKeywordId);
+							stmt.setInt(++index, articleNewId + 1);
+							stmt.setInt(++index, integer);
+
+						});
+
+			}
+
+			return articleNewId + 1;
 		}
-
-		article.setWriterId(sessionData.getUser().getUserId());
-		article.setTopicId(topicId);
-
-		articles.add(article);
-
-		return articles.size() - 1;
 	}
 
 	@Override
 	public Article getById(int articleId) {
-		return articles.get(articleId);
+		SimpleDataFetcher<Article> articleFetcher = new SimpleDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE WHERE ID = ?", stmt -> stmt.setInt(1, articleId),
+				articleFetcher);
+		Article data = articleFetcher.getData();
+
+		fillKeywords(data);
+		fillCategory(data);
+
+		return data;
 	}
 
 	@Override
-	public int mostTimesModifiedArticle() {
-		return 0;
+	public int worstAuthor() {
+		
+		SimpleDataFetcher<Integer> categoryFetcher = new SimpleDataFetcher<>(resultset -> resultset.getInt(1));
+		OracleDatabase.request("SELECT AUTHOR_ID FROM W_ARTICLE GROUP BY AUTHOR_ID ORDER BY SUM(MODIFCATIONCOUNTER)", categoryFetcher);
+		return categoryFetcher.getData();
+
 	}
 
 	@Override
-	public int mostTimesCorrectedArticle() {
-		return 0;
+	public List<Article> mostTimesCorrectedArticle() {
+
+		
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE ORDER BY( MODIFCATIONCOUNTER) DESC", articleFetcher);
+		return articleFetcher.getData().stream().limit(3).collect(Collectors.toList());
+
 	}
 
 	@Override
 	public int numberOfPublishedArticlesInCategory(int categoryId) {
-		long count = countPublishedArticlesInCategories(categoryId);
-		return (int) count;
+
+		SimpleDataFetcher<Integer> categoryFetcher = new SimpleDataFetcher<>(resultset -> resultset.getInt(1));
+		OracleDatabase.request("SELECT COUNT(*) FROM W_DISCUSSED_CATEGORY WHERE CATEGORY_ID = ?",
+				stmt -> stmt.setInt(1, categoryId), categoryFetcher);
+		return categoryFetcher.getData();
 	}
 
 	private long countPublishedArticlesInCategories(int categoryId) {
-		long count = articles.stream().filter(article -> article.getCategoryId() == categoryId && article.isReviewed())
-				.count();
 
-		List<Category> categories = categoryService.listSubCategories(categoryId);
-		for (Category category : categories) {
-			count += countPublishedArticlesInCategories(category.getId());
-		}
-
-		return count;
+		SimpleDataFetcher<Integer> categoryFetcher = new SimpleDataFetcher<>(resultset -> resultset.getInt(1));
+		OracleDatabase.request(
+				// SELECT * FROM W_DISCUSSED_CATEGORY LEFT OUTER JOIN W_ARTICLE ON W_ARTICLE.ID
+				// = W_DISCUSSED_CATEGORY.CATEGORY_ID WHERE CATEGORY_ID = 1 AND APPROVED = 1
+				"SELECT COUNT(*) FROM W_DISCUSSED_CATEGORY LEFT OUTER JOIN W_ARTICLE ON W_ARTICLE.ID = W_DISCUSSED_CATEGORY.CATEGORY_ID WHERE CATEGORY_ID = ? AND APPROVED = 1",
+				stmt -> stmt.setInt(1, categoryId), categoryFetcher);
+		return categoryFetcher.getData();
 	}
 
 	@Override
 	public List<Article> listPublishedArticlesInCategory(int categoryId) {
-		List<Article> articlesInTheCategory = articles.stream()
-				.filter(article -> article.getCategoryId() == categoryId && article.isReviewed())
-				.collect(Collectors.toList());
-		return articlesInTheCategory;
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request(
+				"SELECT W_ARTICLE.ID,W_ARTICLE.TITLE,W_ARTICLE.CREATION_DATE,W_ARTICLE.MODIFICATION_TYPE,W_ARTICLE.CONTENT,W_ARTICLE.AUTHOR_ID,W_ARTICLE.TOPIC_ID,W_ARTICLE.LANGUAGE_ID,W_ARTICLE.APPROVED,W_ARTICLE.VISITED,W_ARTICLE.MODIFCATIONCOUNTER,W_ARTICLE.LECTOR_ID FROM W_DISCUSSED_CATEGORY LEFT OUTER JOIN W_ARTICLE ON W_ARTICLE.ID = W_DISCUSSED_CATEGORY.ARTICLE_ID WHERE CATEGORY_ID = ? AND APPROVED = 1",
+				stmt -> stmt.setInt(1, categoryId), articleFetcher);
+		return articleFetcher.getData();
 	}
 
 	@Override
-	public List<Integer> articlesOrderedByTheNumberOfLanguages() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Article> articlesOrderedByTheNumberOfLanguages() {
+
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request(
+				"SELECT * FROM W_ARTICLE kulso WHERE LANGUAGE_ID = ( SELECT MIN(belso.LANGUAGE_ID) FROM W_ARTICLE belso WHERE belso.TOPIC_ID = kulso.TOPIC_ID ) ORDER BY ( SELECT COUNT(*) FROM W_ARTICLE belso WHERE belso.TOPIC_ID = kulso.TOPIC_ID ) DESC  ",
+				articleFetcher);
+		return articleFetcher.getData();
 	}
 
 	@Override
 	public int translatedToTheMostLanguages() {
-		// TODO Auto-generated method stub
-		return 0;
+		List<Article> articlesOrderedByTheNumberOfLanguages = articlesOrderedByTheNumberOfLanguages();
+		
+		return articlesOrderedByTheNumberOfLanguages.get(0).getId();
 	}
 
 	@Override
 	public List<Article> listPublishedArticlesIdTitle() {
-		return articles.stream().filter(a -> a.isReviewed()).collect(Collectors.toList());
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE WHERE APPROVED = 1", articleFetcher);
+		return articleFetcher.getData();
 	}
 
 	@Override
 	public List<Article> listTranslationsOf(int articleId) {
-		Article article = getById(articleId);
-		int topicId = article.getTopicId();
-
-		List<Article> translations = articles.stream().filter(
-				a -> a.getTopicId() == topicId && a.isReviewed() && a.getLanguageId() != article.getLanguageId())
-				.collect(Collectors.toList());
-
-		// ITT JÖNNE AZ, HOGY CSAK A LEGFRISSEBB DÁTUMÚT NÉZZÜK
-
-		return translations;
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request(
+				"SELECT * FROM W_ARTICLE WHERE TOPIC_ID = (SELECT TOPIC_ID FROM W_ARTICLE WHERE ID = ?) AND ID <> ?",
+				stmt -> {
+					int index = 0;
+					stmt.setInt(++index, articleId);
+					stmt.setInt(++index, articleId);
+				}, articleFetcher);
+		return articleFetcher.getData();
 	}
 
 	@Override
 	public void accept(int articleId) {
-		getById(articleId).setReviewed(true);
-		assignedLectors.remove(articleId);
+
+		OracleDatabase.execute("UPDATE H675212.W_ARTICLE SET APPROVED = 1 WHERE ID = ?",
+				stmt -> stmt.setInt(1, articleId));
 	}
 
 	@Override
 	public void decline(int articleId) {
-		articles.remove(articleId);
-		assignedLectors.remove(articleId);
+		OracleDatabase.execute("DELETE FROM W_ARTICLE WHERE ID = ? ", stmt -> stmt.setInt(1, articleId));
 	}
 
 	@Override
 	public List<Article> assignedArticlesToReview(int userId) {
-		List<Article> notReviewed = articles.stream().filter(a -> !a.isReviewed()
-				&& assignedLectors.containsKey(a.getId()) && assignedLectors.get(a.getId()) == userId)
-				.collect(Collectors.toList());
-		return notReviewed;
+
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE WHERE LECTOR_ID = ? AND APPROVED = 0",
+				stmt -> stmt.setInt(1, userId), articleFetcher);
+		return articleFetcher.getData();
 	}
 
 	@Override
 	public List<Article> notReviewableArticles() {
-		List<Article> notReviewables = articles.stream().filter(
-				a -> !a.isReviewed() && a.getWriterId() == -1 && !userService.isReviewableCategory(a.getCategoryId()))
-				.collect(Collectors.toList());
-		return notReviewables;
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE WHERE APPROVED = 0 AND LECTOR_ID IS NULL", articleFetcher);
+		List<Article> articles = articleFetcher.getData();
+		articles.forEach(a->fillCategory(a));
+		
+		List<Article> notReviewable = articles.stream()
+				.filter(a -> !userService.isReviewableCategory(a.getCategoryId())).collect(Collectors.toList());
+		return notReviewable;
 	}
 
 	@Override
@@ -285,6 +292,7 @@ public class ArticleServiceDummy implements ArticleService {
 		int categoryId = article.getCategoryId();
 
 		List<Integer> listLectorsOfCategory = userService.listLectorsOfCategory(categoryId);
+
 		if (article.getWriterId() != -1 && !listLectorsOfCategory.contains(article.getWriterId())) {
 			listLectorsOfCategory.add(article.getWriterId()); // A SZERZŐ IS LEHET LEKTOR!
 		}
@@ -294,32 +302,77 @@ public class ArticleServiceDummy implements ArticleService {
 
 	@Override
 	public List<Article> notAssignedArticles() {
-		List<Article> notAssigned = articles.stream().filter(a -> !a.isReviewed()
-				&& !assignedLectors.containsKey(a.getId()) && userService.isReviewableCategory(a.getCategoryId()))
+
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE WHERE APPROVED = 0 AND LECTOR_ID IS NULL", articleFetcher);
+		List<Article> articles = articleFetcher.getData();
+
+		articles.forEach(a->fillCategory(a));
+		
+		List<Article> notAssigned = articles.stream().filter(a -> userService.isReviewableCategory(a.getCategoryId()))
 				.collect(Collectors.toList());
+		
+		
 		return notAssigned;
 	}
 
 	@Override
 	public void assignArticle(int articleId, int lectorId) {
-		assignedLectors.put(articleId, lectorId);
+		OracleDatabase.execute("UPDATE H675212.W_ARTICLE SET LECTOR_ID = ? WHERE ID = ?", stmt -> {
+			int index = 0;
+			stmt.setInt(++index, lectorId);
+			stmt.setInt(++index, articleId);
+
+		});
 	}
 
 	@Override
 	public List<User> listLazyUsers() {
-		List<User> lazyUsers = userService.listUsers().stream().filter( u ->
-		!articles.stream().anyMatch(a -> a.getWriterId() == u.getUserId())).collect(Collectors.toList());
-		return lazyUsers;
+
+		ListDataFetcher<User> userFetcher = new ListDataFetcher<>(Parser::User);
+		OracleDatabase.request("SELECT * FROM W_USER WHERE ID NOT IN (SELECT AUTHOR_ID FROM W_ARTICLE) ", userFetcher);
+		return userFetcher.getData();
+
 	}
 
 	@Override
-	public List<Article> listAllArticlesIdTitle() {
-		return articles;
+	public Map<Integer, Article> listAllArticlesIdTitle() {
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request("SELECT * FROM W_ARTICLE", articleFetcher);
+		return articleFetcher.getData().stream().collect(Collectors.toMap(Article::getId, u -> u));
 	}
 
 	@Override
 	public List<Article> listArticlesByKeywords(int keywordId) {
-		return articles.stream().filter(a->a.isReviewed() && a.getKeywordIDs().contains(keywordId)).collect(Collectors.toList());
+		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
+		OracleDatabase.request(
+				"SELECT * FROM W_ARTICLE WHERE ID IN (SELECT ARTICLE_ID FROM W_KEYWORD_MARK WHERE KEYWORD_ID = ?)",
+				stmt -> stmt.setInt(1, keywordId), articleFetcher);
+		return articleFetcher.getData();
+	}
+
+	private void fillKeywords(Article article) {
+
+		List<Integer> keywordIDs = new ArrayList<>();
+
+		ListDataFetcher<Integer> articleFetcher = new ListDataFetcher<>(resultSet -> resultSet.getInt(1));
+		OracleDatabase.request("SELECT KEYWORD_ID FROM W_KEYWORD_MARK WHERE ARTICLE_ID = ?",
+				stmt -> stmt.setInt(1, article.getId()), articleFetcher);
+		if (articleFetcher.getData() != null) {
+			keywordIDs.addAll(articleFetcher.getData());
+		}
+		article.setKeywordIDs(keywordIDs);
+	}
+	
+	
+	private void fillCategory(Article article) {
+
+		SimpleDataFetcher<Integer> articleFetcher = new SimpleDataFetcher<>(resultSet -> resultSet.getInt(1));
+		OracleDatabase.request("SELECT CATEGORY_ID FROM W_DISCUSSED_CATEGORY WHERE ARTICLE_ID = ?",
+				stmt -> stmt.setInt(1, article.getId()), articleFetcher);
+		if (articleFetcher.getData() != null) {
+			article.setCategoryId(articleFetcher.getData());
+		}
 	}
 
 }

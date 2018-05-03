@@ -1,6 +1,7 @@
 package tkvnmsz.tudastar.category;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CategoryService {
 	
@@ -17,18 +18,18 @@ public interface CategoryService {
 	 * List available categories
 	 * @return list of categories
 	 */
-	List<Category> listCategories();
+	Map<Integer, Category> listCategories();
 	
 	/**
 	 * Fill up the number of articles in categories
-	 * @param categories
+	 * @param listCategories
 	 */
-	void fillUpNumberOfArticles(List<Category> categories);
+	void fillUpNumberOfArticles(Map<Integer, Category> listCategories);
 	
 	/**
 	 * List direct subcategories of the category related to the given categoryId
 	 * @param categoryId
 	 * @return
 	 */
-	List<Category> listSubCategories(int categoryId);
+	Map<Integer, Category> listSubCategories(int categoryId);
 }

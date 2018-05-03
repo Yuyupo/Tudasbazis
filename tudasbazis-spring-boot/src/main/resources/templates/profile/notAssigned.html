@@ -27,7 +27,7 @@
 									<select class="form-control" name="lectorId">
 										<th:block th:each="lectorId : ${lectors[article.id]}">
 											<option th:value="${lectorId}"
-												th:text="${users[lectorId].username} + ' (' + ${users[lectorId].lectoringLevelInCategory[article.categoryId] == 1 ? 'beginner' : 'expert'} + ')'"></option>
+												th:text="${users.get(lectorId).username} + ' (' + ${users.get(lectorId).lectoringLevelInCategory.get(article.categoryId) == 1 ? 'beginner' : 'expert'} + ')'"></option>
 										</th:block>
 									</select> <input type="submit" value="Assign">
 								</form>
