@@ -9,7 +9,6 @@
 	  <ol class="carousel-indicators">
 	    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 	    <li data-target="#myCarousel" data-slide-to="1"></li>
-	    <li data-target="#myCarousel" data-slide-to="2"></li>
 	  </ol>
 	
 	  <!-- Wrapper for slides -->
@@ -28,19 +27,14 @@
 	    <img alt="" src="login/carousel.jpg">
 	    <div class="carousel-caption">
 	    	<h1><font color="black">Article of the day</font></h1>
-	        <p class="lead"><font color="black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</font></p>
-	        <p><a class="btn btn-lg btn-success" href="signup" role="button">Read the whole article</a></p>
+	    	<h2 ><font color="black" th:text="${articleOfTheDay.title}"></font></h2>
+	        <p class="lead">
+	        <font color="black" th:text="${#strings.abbreviate(articleOfTheDay.content,150)} "></font></p>
+	        <p><a class="btn btn-lg btn-success" href="signup" role="button" th:href="'/article/read/'+${articleOfTheDay.id}">Read the whole article</a></p>
 	    </div>
 	      </div>
-	
-	    <div class="item">
-	      <img alt="" src="login/carousel.jpg">
-	      <div class="carousel-caption">
-	      	<font color="black">asdasdasdasd</font>
-	      </div>
-	    </div>
 	  </div>
-	
+
 	  <!-- Left and right controls -->
 	  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left"></span>
@@ -51,49 +45,50 @@
 	    <span class="sr-only">Next</span>
 	  </a>
 	</div>
+     <div class="jumbotron">
+	     <div class="container">
+	     	<div class="row marketing">
+	     		<div class="col-lg-6">
+	     			<div class="panel panel-default">
+	     				<div class="panel-heading">
+	     					<h3 class="panel-title">Articles that got translated to most languages:</h3>
+	     				</div>
+					  	<div class="panel-body">
+					    <a th:href="'/article/read/'+${mostLanguages.id}" th:text="${mostLanguages.title}"></a>
+					  </div>
+					</div>
+		     		<div class="panel panel-danger">
+					    <div class="panel-heading">
+					    	<h3 class="panel-title">Worst author:</h3>
+					    </div>
+				    	<div class="panel-body">
+				    		<span th:text="${worstUser.username}"></span>
+				    	</div>
+				    </div>
+				    
+	     		</div>
+	     		<div class="col-lg-6">
+	     				<div class="panel panel">
+						    <div class="panel-heading">
+						    	<h3 class="panel-title">Most corrected articles:</h3>
+						    </div>
+						    <div class="panel-body">
+				    			<ul class="list-group">
+				     				<th:block th:each="mostCorrected : ${mostCorrected}">
+								     	<li class="list-group-item">
+								     		<a th:href="'/article/read/'+${mostCorrected.id}" th:text="${mostCorrected.title}"></a><br>
+								     	</li>
+							     	</th:block>
+								</ul>
+				    		</div>
+					    </div>
+	     			
+				     
+	     		</div>
+	     	</div>
+	     </div>
+     </div>
      
-     LEGTÖBB NYELVRE FORDÍTOTTÁK:
-     <a th:href="'/article/read/'+${mostLanguages.id}" th:text="${mostLanguages.title}"></a><br>
-     LEGTÖBBSZÖR JAVÍTOTTÁK A CIKKEIT:
-     <span th:text="${worstUser.username}"></span><br/>
-     
-     Legtöbbször javÍtott cikkek listája:
-     <th:block th:each="mostCorrected : ${mostCorrected}">
-     	<a th:href="'/article/read/'+${mostCorrected.id}" th:text="${mostCorrected.title}"></a><br>
-     </th:block>
-     
- 	<!--    <div class="row marketing">
-        <div class="col-lg-6">
-          <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
-          <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
-
-          <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
-          <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
-
-          <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
-          <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
-        </div>
-
-        <div class="col-lg-6">
-          <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
-          <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
-
-          <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
-          <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
-
-          <h4 th:text="${article.title}"><a href="#">Article title</a></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
-          <a href="#"><span class ="label label-primary" th:text="${article.category}">Category</span></a>
-        </div>
-      </div>-->
-     
-
-
     </div> <!-- /container -->
 
   </body>

@@ -3,8 +3,10 @@
 <head th:replace="header.html"></head>
 <body>
 
-	<div class="container">
-		<div th:include="menubar.html" th:with="page=${'categories'}"></div>
+<div class="container">
+	<div th:include="menubar.html" th:with="page=${'categories'}"></div>
+	<div class="jumbotron">
+		
 		<h1 th:text="${category.name}">Category name</h1>
 		<a th:if="${category.parentId != -1}"
 			th:href="'/category/' + ${category.parentId}">Go to supercategory</a>
@@ -30,6 +32,7 @@
 			</a>
 		</th:block>
 	</div>
+</div>
 
 </body>
 </html>

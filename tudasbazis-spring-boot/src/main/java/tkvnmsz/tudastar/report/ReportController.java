@@ -52,7 +52,7 @@ public class ReportController {
 		List<Report> reports = reportService.listReports();
 		model.addAttribute("reports", reports);
 		
-		Map<Integer, Article> listAllArticlesIdTitle = articleService.listAllArticlesIdTitle();
+		Map<Integer, Article> listAllArticlesIdTitle = articleService.listAllArticles();
 		model.addAttribute("articles", listAllArticlesIdTitle);
 		
 		

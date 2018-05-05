@@ -336,7 +336,7 @@ public class ArticleServiceDummy implements ArticleService {
 	}
 
 	@Override
-	public Map<Integer, Article> listAllArticlesIdTitle() {
+	public Map<Integer, Article> listAllArticles() {
 		ListDataFetcher<Article> articleFetcher = new ListDataFetcher<>(Parser::Article);
 		OracleDatabase.request("SELECT * FROM W_ARTICLE", articleFetcher);
 		return articleFetcher.getData().stream().collect(Collectors.toMap(Article::getId, u -> u));
