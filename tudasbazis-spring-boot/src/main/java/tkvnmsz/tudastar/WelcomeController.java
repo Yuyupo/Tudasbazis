@@ -16,17 +16,17 @@
 
 package tkvnmsz.tudastar;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import tkvnmsz.tudastar.article.Article;
 import tkvnmsz.tudastar.article.ArticleService;
@@ -57,6 +57,14 @@ public class WelcomeController {
 		
 		List<Article> mostTimesCorrectedArticle = articleService.mostTimesCorrectedArticle();
 		model.addAttribute("mostCorrected", mostTimesCorrectedArticle);
+		
+		Map<Integer, Article> listAllArticles = articleService.listAllArticles();
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		int seed = df.format(date).hashCode();
+		int articleOfTheDayId = new Random(seed).nextInt(listAllArticles.size());
+		Article articleOfTheDay = listAllArticles.values().stream().skip(articleOfTheDayId).findFirst().get();
+		model.addAttribute("articleOfTheDay", articleOfTheDay);
 		
 		return Pages.MAIN_PAGE;
 	}

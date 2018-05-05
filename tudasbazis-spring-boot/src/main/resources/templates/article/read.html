@@ -10,49 +10,49 @@
 		<div class="jumbotron">
 
 			<div th:switch="${article.reviewed}">
-				Megerősített: <font th:case="true" color="green">IGEN</font> <font
-					th:case="false" color="red">MÉG NEM</font>
+				Approved: <font th:case="true" color="green"> <span
+					class="glyphicon glyphicon-ok"></span>
+				</font> <font th:case="false" color="red"> <span
+					class="glyphicon glyphicon-remove"></span>
+				</font>
+			</div><br>
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title" th:text="${article.title}">Article
+						title</h1>
+				</div>
+				<div class="panel-body">
+					<p th:text="${article.content}">A tartalom</p>
+				</div>
+			</div>
+			<div class="row marketing">
+				<div class="col-lg-6">
+					Other languages:<br>
+					<th:block th:each="translation : ${translations}">
+						<a th:href="'/article/read/' + ${translation.id}"
+							th:text="${languages[translation.languageId].name}"></a>
+						<br>
+					</th:block>
+				</div>
+				<div class="col-lg-6">
+					<a th:href="'/report/'+${article.id}">Report a problem</a> <br>Keywords:
+					<th:block th:each="keywordId : ${article.keywordIDs}">
+						<a th:href="'/article/similar/' + ${keywordId}"
+							th:text="${keywords.get(keywordId).keyword}"></a>
+					</th:block>
+					<br>Author: <span
+						th:text="${ article.writerId != -1 ? users.get(article.writerId).username : 'Anonymus'}"></span>
+					<br>Date: <span th:text="${article.date}"></span> <br>Category:
+					<span th:text="${categories.get(article.categoryId).name}"></span>
+				</div>
 			</div>
 
-			<h1 th:text="${article.title}">A cikk címe</h1>
-			
-			<span th:text="${article.topicId}">EZ NEM FOG KELLENI, CSAK
-				TESZT CUCC</span><br>
-			
-			<a th:href="'/report/'+${article.id}">REPORT</a>
-			
-			<hr>
 
-			<p th:text="${article.content}">A tartalom</p>
 
-			<hr>
 
-			Kulcsszavak
-			<th:block th:each="keywordId : ${article.keywordIDs}">
-				<a th:href="'/article/similar/' + ${keywordId}" th:text="${keywords.get(keywordId).keyword}"></a>
-			</th:block>
 
-			<hr>
 
-			Szerző: <span
-				th:text="${ article.writerId != -1 ? users.get(article.writerId).username : 'Anonymus'}"></span>
-			
-			<hr>
-
-			Kategória: <span th:text="${categories.get(article.categoryId).name}"></span>
-
-			<hr>
-
-			Dátum: <span th:text="${article.date}"></span>
-
-			<hr>
-
-			Más nyelveken:<br>
-			<th:block th:each="translation : ${translations}">
-				<a th:href="'/article/read/' + ${translation.id}"
-					th:text="${languages[translation.languageId].name}"></a>
-				<br>
-			</th:block>
 
 
 		</div>

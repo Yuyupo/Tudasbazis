@@ -69,7 +69,7 @@ public interface ArticleService {
 	 * list only the id and title of articles
 	 * @return list of articles (only id and title fed)
 	 */
-	Map<Integer, Article> listAllArticlesIdTitle();
+	Map<Integer, Article> listAllArticles();
 	
 	/**
 	 * list articles that are the translations of the give article

@@ -10,38 +10,43 @@
 			<img src="login/owl.png" height="100" width="100">
 			<h1 th:text="${user.username}">Username</h1>
 			<!-- skill/facility/categories -->
-			<p th:text="${user.scientificDegree}"></p>
-			<p th:text="${user.institution}"></p>
+			<h3>Scientific Degree:</h3><p th:text="${user.scientificDegree}"></p>
+			<h3>Institution:</h3><p th:text="${user.institution}"></p>
 
-			<p>
-				[
-				<th:block th:each="categoryId : ${user.lectoringLevelInCategory}">
-					<span th:text="${categories[categoryId.key].name}"></span>
-					<span
-						th:text="'(' + ${categoryId.value == 1 ? 'beginner' : 'expert'} + ')'"></span>
-				</th:block>
-				]
-			</p>
+		<div class="row marketing">
+			<div class="col-lg-6">
+					<div class="panel panel-default">
+						    <div class="panel-heading">
+						    	<h3 class="panel-title">Skills:</h3>
+						    </div>
+						    <div class="panel-body">
+				    			<ul class="list-group">
+				     				<th:block th:each="categoryId : ${user.lectoringLevelInCategory}">
+				     					<li class="list-group-item">
+				     						<p th:text="${categories[categoryId.key].name} + '(' + ${categoryId.value == 1 ? 'beginner' : 'expert'} + ')'"></p>
+				     					</li>
+							     	</th:block>
+								</ul>
+				    		</div>
+					</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+				<div class="btn-group-vertical">
+				  <a href="/article/post" class="btn btn-info" role="button">Write an article</a>
+				  <a href=/assign type="button" class="btn btn-primary" th:if="${user.admin}">New articles to assign to a lector</a>
+				  <a href=/notreviewable type="button" class="btn btn-primary" th:if="${user.admin}">Not reviewable articles</a>
+				  <a href=/lazyusers type="button" class="btn btn-primary" th:if="${user.admin}">Lazy Users</a>
+				  <a href=/review type="button" class="btn btn-primary">Your articles to review</a>
+				  <a href=/settings type="button" class="btn btn-primary">Settings</a>
+				  <a href=/reports type="button" class="btn btn-primary">Reports</a>
+				  
+				</div>
+				
+				</div>
+			</div>
+		</div>
 
-
-
-			<ul class="nav nav-pills" role="tablist">
-				<!-- ide kell majd if a user lector akkor legyen ott a review -->
-				<li role="presentation" class="active"><a href="/assign">
-						New articles to assign to a lector </a></li>
-				<li role="presentation" class="active"><a href="/notreviewable">Not
-						reviewable articles </a></li>
-				<li role="presentation" class="active"><a href="/lazyusers">Lazy
-						users</a></li>
-				<li role="presentation" class="active"><a href="/review">Your
-						articles to review </a></li>
-				<li role="presentation" class="active"><a href="/settings">Settings</a></li>
-				<li role="presentation" class="active"><a href="/reports">Reports</a></li>
-			</ul>
-			<ul class="nav nav-pills" role="tablist">
-				<li role="presentation"><a href="/article/post">Write
-						article</a></li>
-			</ul>
 		</div>
 	</div>
 	<!-- /container -->
